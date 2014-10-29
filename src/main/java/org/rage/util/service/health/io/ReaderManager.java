@@ -19,7 +19,7 @@ public interface ReaderManager
    /**
     * Represents getServiceList
     * 
-    * @return
+    * @return list
     * @since Oct 24, 2014
     * 
     */

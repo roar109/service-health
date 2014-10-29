@@ -37,11 +37,11 @@ public class ServiceCheckerHealthChild implements Runnable
     * 
     * @param serverAddress
     * @param port
-    * @return
+    * @return boolean
     * @since Oct 24, 2014
     * 
     */
-   public boolean hostAvailabilityCheck (final String serverAddress, final int port)
+   private boolean hostAvailabilityCheck (final String serverAddress, final int port)
    {
       try
       {

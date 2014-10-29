@@ -16,6 +16,12 @@ public class Service implements HealthArtifact
    private boolean status;
 
 
+   /**
+    * Constructs an instance of Service object.
+    * 
+    * @param serverValue
+    * @param portValue
+    */
    public Service (final String serverValue, final int portValue)
    {
       this.server = serverValue;
@@ -27,6 +33,7 @@ public class Service implements HealthArtifact
    /**
     * @return the server
     */
+   @Override
    public String getServer ()
    {
       return server;
@@ -34,8 +41,9 @@ public class Service implements HealthArtifact
 
 
    /**
-    * @param server the server to set
+    * @param value the server to set
     */
+   @Override
    public void setServer (final String value)
    {
       this.server = value;
@@ -45,6 +53,7 @@ public class Service implements HealthArtifact
    /**
     * @return the port
     */
+   @Override
    public int getPort ()
    {
       return port;
@@ -52,8 +61,9 @@ public class Service implements HealthArtifact
 
 
    /**
-    * @param port the port to set
+    * @param value the port to set
     */
+   @Override
    public void setPort (final int value)
    {
       this.port = value;
@@ -63,6 +73,7 @@ public class Service implements HealthArtifact
    /**
     * @return the status
     */
+   @Override
    public boolean isStatus ()
    {
       return status;
@@ -70,13 +81,12 @@ public class Service implements HealthArtifact
 
 
    /**
-    * @param status the status to set
+    * @param value the status to set
     */
+   @Override
    public void setStatus (final boolean value)
    {
       this.status = value;
    }
-
-
 
 }

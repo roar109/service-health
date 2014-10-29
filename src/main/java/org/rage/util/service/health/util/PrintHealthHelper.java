@@ -15,7 +15,7 @@ import org.rage.util.service.health.pojo.HealthArtifact;
 public class PrintHealthHelper
 {
    private static final String SERVER_NAME_LABEL = "Host";
-   private static final String STATUS_NAME_LABEL = "Host";
+   private static final String STATUS_NAME_LABEL = "Status";
 
 
    /**

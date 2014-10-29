@@ -2,8 +2,8 @@ package org.rage.util.service.health.io;
 
 
 import org.apache.commons.io.FileUtils;
+import org.rage.util.service.health.pojo.Balancer;
 import org.rage.util.service.health.pojo.HealthArtifact;
-import org.rage.util.service.health.pojo.Service;
 import org.rage.util.service.health.util.HealthCheckerConstants;
 
 import java.io.File;
@@ -14,25 +14,25 @@ import java.util.List;
 
 
 /**
- * ServiceReaderManagerImpl represents ...
+ * VIPReaderManagerImpl represents ...
  * 
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
  * 
  */
-public class ServerReaderManagerImpl implements ReaderManager
+public class BalancerReaderManagerImpl implements ReaderManager
 {
    private final String          fileName;
    private List <HealthArtifact> artifacts;
 
 
    /**
-    * Constructs an instance of ServerReaderManagerImpl object.
+    * Constructs an instance of VIPReaderManagerImpl object.
     * 
     * @param value
     */
-   public ServerReaderManagerImpl (final String value)
+   public BalancerReaderManagerImpl (final String value)
    {
       this.fileName = value;
       readFile ();
@@ -43,8 +43,9 @@ public class ServerReaderManagerImpl implements ReaderManager
     * Overrides readFile
     * 
     * @since Oct 24, 2014
+    * @see org.rage.util.service.health.io.ReaderManager#readFile()
     */
-   public void readFile ()
+   private void readFile ()
    {
       final File file = new File (fileName);
       try
@@ -55,13 +56,7 @@ public class ServerReaderManagerImpl implements ReaderManager
          {
             if (ReaderHelper.includeLine (line))
             {
-               final String[] data = line.split (",");
-               int port = HealthCheckerConstants.SERVER_DEFAULT_PORT;
-               if (data.length > 1)
-               {
-                  port = new Integer (data[1]);
-               }
-               artifacts.add (new Service (data[0], port));
+               artifacts.add (new Balancer (line, HealthCheckerConstants.BALANCER_PORT));
             }
          }
       }
@@ -70,7 +65,6 @@ public class ServerReaderManagerImpl implements ReaderManager
          e.printStackTrace ();
       }
    }
-
 
 
    /**

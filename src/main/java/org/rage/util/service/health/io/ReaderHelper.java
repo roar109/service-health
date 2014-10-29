@@ -24,6 +24,10 @@ public final class ReaderHelper
     */
    public static boolean includeLine (final String line)
    {
+      if (StringUtils.isBlank (line))
+      {
+         return false;
+      }
       final String lineFormatted = StringUtils.strip (line);
       final boolean comment = StringUtils.startsWith (lineFormatted, "#");
       return comment ? false : true;

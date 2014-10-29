@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 
 /**
- * ServiceHealthChecker represents ...
+ * Service that launch a pool thread to cgecjk the health of the passes artifacts
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -33,7 +33,7 @@ public class ServiceHealthCheckerMain
 
 
    /**
-    * Represents runAllAndWait
+    * Run artifacts.length number of threads to check if a server is alive.
     * 
     * @return artifacts
     * @since Oct 24, 2014
@@ -50,10 +50,8 @@ public class ServiceHealthCheckerMain
       executor.shutdown ();
       while ( !executor.isTerminated ())
       {
-         // TODO
+         // nothing here
       }
       return artifacts;
    }
-
-
 }
