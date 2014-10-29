@@ -11,6 +11,8 @@ package org.rage.util.service.health.service;
  */
 public class ConsoleHealthChecker
 {
+   private static final String TO_FILE_PARAMETERNAME = "toFile";
+
 
    /**
     * Executes a main flow 1- normal servers, 2- Balancers
@@ -22,12 +24,18 @@ public class ConsoleHealthChecker
    public static void main (final String[] args)
    {
       System.out.println ("Starting...");
+
       final HealthCheckerService hcs = new HealthCheckerService ();
-      hcs.setPrintToFile (Boolean.FALSE);
+      if (System.getProperty (TO_FILE_PARAMETERNAME) != null)
+      {
+         System.out.println ("Writing output to file...");
+      }
+
+      hcs.setPrintToFile ( (System.getProperty (TO_FILE_PARAMETERNAME) != null) ? Boolean.TRUE : Boolean.FALSE);
       hcs.executeMainFlow (args);
-      // hcs.checkServersHealth (args[0]);
-      // hcs.checkBalancersHealth (args[1]);
+
       System.out.println ("Finished");
    }
+
 
 }
