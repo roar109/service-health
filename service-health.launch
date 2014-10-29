@@ -11,7 +11,7 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.rage.util.service.health.service.HealthCheckerService"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.rage.util.service.health.service.ConsoleHealthChecker"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;c:\\servers-list.txt&quot; &quot;c:\\servers-list-vip.txt&quot;"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="service-health"/>
 </launchConfiguration>
