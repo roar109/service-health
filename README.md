@@ -7,6 +7,8 @@ Execute with eclipse the launch file or with maven:
 
 `mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleHealthChecker -Dexec.args="c:\servers-list.txt"`
 
+You can add the `-DtoFile=y` parameter to export the content to a results.txt
+
 Parameters:
 - args[0] = path/to/file/servers.txt
 - args[1] [Optional] =  path/to/file/balancers.txt
