@@ -45,7 +45,7 @@ public class HealthCheckerService
       }
       outputStream.println ("Starting health service\n");
       checkServersHealth (args[0]);
-      if (args.length < 1)
+      if (args.length < 2)
       {
          return;
       }
