@@ -9,7 +9,7 @@ import java.io.PrintStream;
 /**
  * OutputResultHelper represents ...
  * 
- * @author <a href="mailto:hmendoza@24hourfit.com">Hector Mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since Oct 29, 2014
  * 
