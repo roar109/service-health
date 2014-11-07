@@ -9,7 +9,7 @@ import java.net.Socket;
 
 
 /**
- * ServiceCheckerHealthChild represents ...
+ * Service that check if a host is available.
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -33,7 +33,7 @@ public class ServiceCheckerHealthChild implements Runnable
 
 
    /**
-    * Represents hostAvailabilityCheck
+    * Creates a Socket to try to connect to a specified host and port.
     * 
     * @param serverAddress
     * @param port
@@ -65,8 +65,7 @@ public class ServiceCheckerHealthChild implements Runnable
    @Override
    public void run ()
    {
-      final boolean available = hostAvailabilityCheck (artifact.getServer (), artifact.getPort ());
-      artifact.setStatus (available);
+      artifact.setStatus (hostAvailabilityCheck (artifact.getServer (), artifact.getPort ()));
    }
 
 }

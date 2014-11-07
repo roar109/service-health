@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 
 /**
- * ReaderHelper represents ...
+ * Helper utility with common functions to read files.
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 public final class ReaderHelper
 {
    /**
-    * Represents includeLine
+    * Check the passed string against some basic validates to discard white spaces and comments.
     * 
     * @param line
     * @return boolean

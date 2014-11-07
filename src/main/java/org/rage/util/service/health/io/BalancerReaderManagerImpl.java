@@ -7,7 +7,6 @@ import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.util.HealthCheckerConstants;
 
 import java.io.File;
-import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +51,7 @@ public class BalancerReaderManagerImpl implements ReaderManager
       {
          final List <String> lines = FileUtils.readLines (file, "UTF-8");
          artifacts = new ArrayList <HealthArtifact> ();
+
          for (final String line : lines)
          {
             if (ReaderHelper.includeLine (line))
@@ -60,8 +60,9 @@ public class BalancerReaderManagerImpl implements ReaderManager
             }
          }
       }
-      catch (final IOException e)
+      catch (final Exception e)
       {
+         System.err.println (e.getMessage ());
          e.printStackTrace ();
       }
    }

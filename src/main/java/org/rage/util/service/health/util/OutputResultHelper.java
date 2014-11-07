@@ -60,7 +60,7 @@ public class OutputResultHelper
     * @since Oct 29, 2014
     * 
     */
-   public PrintStream getOutputResults ()
+   public PrintStream getOutputResultsStream ()
    {
       return ps;
    }

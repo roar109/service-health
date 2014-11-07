@@ -40,7 +40,7 @@ public class HealthCheckerService
       checkPrintStream ();
       if (args.length == 0)
       {
-         outputStream.println ("No files specified");
+         outputStream.println ("No file specified to analyze. Shutdown program...");
          System.exit (1);
       }
       outputStream.println ("Starting health service\n");
@@ -68,6 +68,7 @@ public class HealthCheckerService
       final ReaderManager svsBalancer = new BalancerReaderManagerImpl (fileName);
       final ServiceHealthCheckerMain checkerVIP = new ServiceHealthCheckerMain (svsBalancer.getServiceList ());
       final List <HealthArtifact> artifactsVip = checkerVIP.runAllAndWait ();
+
       PrintHealthHelper.printHeaders (outputStream);
       for (final HealthArtifact artifact : artifactsVip)
       {
@@ -89,6 +90,7 @@ public class HealthCheckerService
       final ReaderManager svs = new ServerReaderManagerImpl (fileName);
       final ServiceHealthCheckerMain checker = new ServiceHealthCheckerMain (svs.getServiceList ());
       final List <HealthArtifact> artifacts = checker.runAllAndWait ();
+
       PrintHealthHelper.printHeaders (outputStream);
       for (final HealthArtifact artifact : artifacts)
       {
@@ -97,6 +99,9 @@ public class HealthCheckerService
    }
 
 
+   /**
+    * Review if the output has been initialized. Checks the printToFile property.
+    * */
    private void checkPrintStream ()
    {
       if (outputStream != null)
@@ -105,7 +110,7 @@ public class HealthCheckerService
       }
       if (printToFile)
       {
-         outputStream = OutputResultHelper.instance ().getOutputResults ();
+         outputStream = OutputResultHelper.instance ().getOutputResultsStream ();
       }
       else
       {

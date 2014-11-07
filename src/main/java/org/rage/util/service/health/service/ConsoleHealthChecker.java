@@ -24,14 +24,16 @@ public class ConsoleHealthChecker
    public static void main (final String[] args)
    {
       System.out.println ("Starting...");
-
+      boolean printToFile = Boolean.FALSE;
       final HealthCheckerService hcs = new HealthCheckerService ();
+
       if (System.getProperty (TO_FILE_PARAMETERNAME) != null)
       {
          System.out.println ("Writing output to file...");
+         printToFile = Boolean.TRUE;
       }
 
-      hcs.setPrintToFile ( (System.getProperty (TO_FILE_PARAMETERNAME) != null) ? Boolean.TRUE : Boolean.FALSE);
+      hcs.setPrintToFile (printToFile);
       hcs.executeMainFlow (args);
 
       System.out.println ("Finished");

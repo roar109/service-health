@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 
 /**
- * Service that launch a pool thread to cgecjk the health of the passes artifacts
+ * Service that launch a pool thread to check the health of the passed artifacts
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -41,16 +41,19 @@ public class ServiceHealthCheckerMain
     */
    public List <HealthArtifact> runAllAndWait ()
    {
+      /* Create a fixed pool of threads to handle all the artifacts at the same time. */
       final ExecutorService executor = Executors.newFixedThreadPool (artifacts.size ());
+
       for (final HealthArtifact artifact : artifacts)
       {
          final Runnable child = new ServiceCheckerHealthChild (artifact);
          executor.execute (child);
       }
+
       executor.shutdown ();
       while ( !executor.isTerminated ())
       {
-         // nothing here
+         // nothing here just wait until is done.
       }
       return artifacts;
    }

@@ -7,14 +7,13 @@ import org.rage.util.service.health.pojo.Service;
 import org.rage.util.service.health.util.HealthCheckerConstants;
 
 import java.io.File;
-import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * ServiceReaderManagerImpl represents ...
+ * Read a list of servers.
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -40,7 +39,7 @@ public class ServerReaderManagerImpl implements ReaderManager
 
 
    /**
-    * Overrides readFile
+    * Read a file and transform its lines into HealthArtifacts
     * 
     * @since Oct 24, 2014
     */
@@ -51,6 +50,7 @@ public class ServerReaderManagerImpl implements ReaderManager
       {
          final List <String> lines = FileUtils.readLines (file, "UTF-8");
          artifacts = new ArrayList <HealthArtifact> ();
+
          for (final String line : lines)
          {
             if (ReaderHelper.includeLine (line))
@@ -65,8 +65,9 @@ public class ServerReaderManagerImpl implements ReaderManager
             }
          }
       }
-      catch (final IOException e)
+      catch (final Exception e)
       {
+         System.err.println (e.getMessage ());
          e.printStackTrace ();
       }
    }

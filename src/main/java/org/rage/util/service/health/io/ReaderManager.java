@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * ReaderManager represents ...
+ * Reader Interface, provides a basic layout for other implementation of readers.
  * 
  * @author Hector Mendoza
  * @version $Id$
@@ -17,7 +17,7 @@ import java.util.List;
 public interface ReaderManager
 {
    /**
-    * Represents getServiceList
+    * Get list of artifacts.
     * 
     * @return list
     * @since Oct 24, 2014
