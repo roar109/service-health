@@ -12,6 +12,7 @@ package org.rage.util.service.health.service;
 public class ConsoleProjectHealthChecker
 {
    private static final String TO_FILE_PARAMETERNAME = "toFile";
+   private static final String PATH_RESULTS          = "resultsPath";
 
 
    /**
@@ -27,6 +28,12 @@ public class ConsoleProjectHealthChecker
       {
          System.out.println ("Writing output to file...");
          printToFile = Boolean.TRUE;
+
+         if (System.getProperty (PATH_RESULTS) != null)
+         {
+            System.out.println ("Using output filename " + System.getProperty (PATH_RESULTS));
+            hcs.setResultsPath (System.getProperty (PATH_RESULTS));
+         }
       }
 
       hcs.setPrintToFile (printToFile);

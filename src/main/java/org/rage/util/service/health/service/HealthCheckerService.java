@@ -28,6 +28,7 @@ import java.util.List;
 public class HealthCheckerService
 {
    private boolean     printToFile  = Boolean.FALSE;
+   private String      resultsPath  = null;
    private PrintStream outputStream = null;
 
 
@@ -58,6 +59,9 @@ public class HealthCheckerService
    }
 
 
+   /**
+    * @param args
+    * */
    public void executeProjectFlow (final String[] args)
    {
       checkPrintStream ();
@@ -116,6 +120,13 @@ public class HealthCheckerService
    }
 
 
+   /**
+    * Represents checkServersHealth
+    *
+    * @param fileName
+    * @since Dic 9, 2014
+    *
+    */
    public void checkProjectHealth (final String fileName)
    {
       checkPrintStream ();
@@ -142,7 +153,14 @@ public class HealthCheckerService
       }
       if (printToFile)
       {
-         outputStream = OutputResultHelper.instance ().getOutputResultsStream ();
+         if (resultsPath != null)
+         {
+            outputStream = OutputResultHelper.instance (resultsPath).getOutputResultsStream ();
+         }
+         else
+         {
+            outputStream = OutputResultHelper.instance ().getOutputResultsStream ();
+         }
       }
       else
       {
@@ -170,4 +188,24 @@ public class HealthCheckerService
    {
       this.printToFile = value;
    }
+
+
+   /**
+    * @return the resultsPath
+    */
+   public String getResultsPath ()
+   {
+      return resultsPath;
+   }
+
+
+   /**
+    * @param value the resultsPath to set
+    */
+   public void setResultsPath (final String value)
+   {
+      this.resultsPath = value;
+   }
+
+
 }

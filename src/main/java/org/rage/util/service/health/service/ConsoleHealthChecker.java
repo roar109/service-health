@@ -21,7 +21,7 @@ public class ConsoleHealthChecker
     * @since Oct 29, 2014
     *
     */
-   public static void main2 (final String[] args)
+   public static void main (final String[] args)
    {
       System.out.println ("Starting...");
       boolean printToFile = Boolean.FALSE;
