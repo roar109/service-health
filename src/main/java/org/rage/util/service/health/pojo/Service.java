@@ -3,11 +3,11 @@ package org.rage.util.service.health.pojo;
 
 /**
  * Service represents ...
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class Service implements HealthArtifact
 {
@@ -18,7 +18,7 @@ public class Service implements HealthArtifact
 
    /**
     * Constructs an instance of Service object.
-    * 
+    *
     * @param serverValue
     * @param portValue
     */
@@ -33,7 +33,6 @@ public class Service implements HealthArtifact
    /**
     * @return the server
     */
-   @Override
    public String getServer ()
    {
       return server;
@@ -43,7 +42,6 @@ public class Service implements HealthArtifact
    /**
     * @param value the server to set
     */
-   @Override
    public void setServer (final String value)
    {
       this.server = value;
@@ -53,7 +51,6 @@ public class Service implements HealthArtifact
    /**
     * @return the port
     */
-   @Override
    public int getPort ()
    {
       return port;
@@ -63,7 +60,6 @@ public class Service implements HealthArtifact
    /**
     * @param value the port to set
     */
-   @Override
    public void setPort (final int value)
    {
       this.port = value;
@@ -73,7 +69,6 @@ public class Service implements HealthArtifact
    /**
     * @return the status
     */
-   @Override
    public boolean isStatus ()
    {
       return status;
@@ -83,7 +78,6 @@ public class Service implements HealthArtifact
    /**
     * @param value the status to set
     */
-   @Override
    public void setStatus (final boolean value)
    {
       this.status = value;

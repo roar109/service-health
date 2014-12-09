@@ -3,11 +3,11 @@ package org.rage.util.service.health.service;
 
 /**
  * ConsoleHealthChecker represents ...
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 29, 2014
- * 
+ *
  */
 public class ConsoleHealthChecker
 {
@@ -16,12 +16,12 @@ public class ConsoleHealthChecker
 
    /**
     * Executes a main flow 1- normal servers, 2- Balancers
-    * 
+    *
     * @param args
     * @since Oct 29, 2014
-    * 
+    *
     */
-   public static void main (final String[] args)
+   public static void main2 (final String[] args)
    {
       System.out.println ("Starting...");
       boolean printToFile = Boolean.FALSE;
@@ -38,6 +38,5 @@ public class ConsoleHealthChecker
 
       System.out.println ("Finished");
    }
-
 
 }

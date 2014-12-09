@@ -1,11 +1,14 @@
 package org.rage.util.service.health.service;
 
 
+import org.rage.util.service.health.checker.ProjectHealthCheckMain;
 import org.rage.util.service.health.checker.ServiceHealthCheckerMain;
 import org.rage.util.service.health.io.BalancerReaderManagerImpl;
+import org.rage.util.service.health.io.ProjectReaderManagerImpl;
 import org.rage.util.service.health.io.ReaderManager;
 import org.rage.util.service.health.io.ServerReaderManagerImpl;
 import org.rage.util.service.health.pojo.HealthArtifact;
+import org.rage.util.service.health.pojo.Project;
 import org.rage.util.service.health.util.OutputResultHelper;
 import org.rage.util.service.health.util.PrintHealthHelper;
 
@@ -16,11 +19,11 @@ import java.util.List;
 
 /**
  * Main class to check the health of some servers
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class HealthCheckerService
 {
@@ -30,10 +33,10 @@ public class HealthCheckerService
 
    /**
     * Represents main
-    * 
+    *
     * @param args
     * @since Oct 24, 2014
-    * 
+    *
     */
    public void executeMainFlow (final String[] args)
    {
@@ -55,12 +58,26 @@ public class HealthCheckerService
    }
 
 
+   public void executeProjectFlow (final String[] args)
+   {
+      checkPrintStream ();
+      if (args.length == 0)
+      {
+         outputStream.println ("No file specified to analyze. Shutdown program...");
+         System.exit (1);
+      }
+      outputStream.println ("Starting health service\n");
+      checkProjectHealth (args[0]);
+      outputStream.println ("\nFinish health service");
+   }
+
+
    /**
     * Represents checkServersHealth
-    * 
+    *
     * @param fileName
     * @since Oct 29, 2014
-    * 
+    *
     */
    public void checkBalancersHealth (final String fileName)
    {
@@ -79,10 +96,10 @@ public class HealthCheckerService
 
    /**
     * Represents checkServersHealth
-    * 
+    *
     * @param fileName
     * @since Oct 29, 2014
-    * 
+    *
     */
    public void checkServersHealth (final String fileName)
    {
@@ -93,6 +110,21 @@ public class HealthCheckerService
 
       PrintHealthHelper.printHeaders (outputStream);
       for (final HealthArtifact artifact : artifacts)
+      {
+         PrintHealthHelper.print (artifact, outputStream);
+      }
+   }
+
+
+   public void checkProjectHealth (final String fileName)
+   {
+      checkPrintStream ();
+      final ProjectReaderManagerImpl svs = new ProjectReaderManagerImpl (fileName);
+      final ProjectHealthCheckMain checker = new ProjectHealthCheckMain (svs.getServiceList ());
+      final List <Project> artifacts = checker.runAllAndWait ();
+
+      PrintHealthHelper.printHeaders (outputStream);
+      for (final Project artifact : artifacts)
       {
          PrintHealthHelper.print (artifact, outputStream);
       }
@@ -131,7 +163,7 @@ public class HealthCheckerService
 
    /**
     * If all output results are appended to a results.txt file. Each time the file is replaced.
-    * 
+    *
     * @param value the printToFile to set
     */
    public void setPrintToFile (final boolean value)

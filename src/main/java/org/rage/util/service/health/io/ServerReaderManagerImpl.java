@@ -14,11 +14,11 @@ import java.util.List;
 
 /**
  * Read a list of servers.
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class ServerReaderManagerImpl implements ReaderManager
 {
@@ -28,7 +28,7 @@ public class ServerReaderManagerImpl implements ReaderManager
 
    /**
     * Constructs an instance of ServerReaderManagerImpl object.
-    * 
+    *
     * @param value
     */
    public ServerReaderManagerImpl (final String value)
@@ -40,7 +40,7 @@ public class ServerReaderManagerImpl implements ReaderManager
 
    /**
     * Read a file and transform its lines into HealthArtifacts
-    * 
+    *
     * @since Oct 24, 2014
     */
    public void readFile ()
@@ -76,12 +76,11 @@ public class ServerReaderManagerImpl implements ReaderManager
 
    /**
     * Overrides getServiceList
-    * 
+    *
     * @return artifacts
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#getServiceList()
     */
-   @Override
    public List <HealthArtifact> getServiceList ()
    {
       return artifacts;

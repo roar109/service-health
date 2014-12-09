@@ -14,11 +14,11 @@ import java.util.List;
 
 /**
  * VIPReaderManagerImpl represents ...
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class BalancerReaderManagerImpl implements ReaderManager
 {
@@ -28,7 +28,7 @@ public class BalancerReaderManagerImpl implements ReaderManager
 
    /**
     * Constructs an instance of VIPReaderManagerImpl object.
-    * 
+    *
     * @param value
     */
    public BalancerReaderManagerImpl (final String value)
@@ -40,7 +40,7 @@ public class BalancerReaderManagerImpl implements ReaderManager
 
    /**
     * Overrides readFile
-    * 
+    *
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#readFile()
     */
@@ -70,12 +70,11 @@ public class BalancerReaderManagerImpl implements ReaderManager
 
    /**
     * Overrides getServiceList
-    * 
+    *
     * @return artifacts
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#getServiceList()
     */
-   @Override
    public List <HealthArtifact> getServiceList ()
    {
       return artifacts;

@@ -2,17 +2,18 @@ package org.rage.util.service.health.util;
 
 
 import org.rage.util.service.health.pojo.HealthArtifact;
+import org.rage.util.service.health.pojo.Project;
 
 import java.io.PrintStream;
 
 
 /**
  * PrintHealthHelper represents ...
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class PrintHealthHelper
 {
@@ -23,11 +24,11 @@ public class PrintHealthHelper
 
    /**
     * Represents printHeaders
-    * 
+    *
     * @param stream
-    * 
+    *
     * @since Oct 29, 2014
-    * 
+    *
     */
    public static void printHeaders (final PrintStream stream)
    {
@@ -37,9 +38,9 @@ public class PrintHealthHelper
 
    /**
     * Represents printHeaders
-    * 
+    *
     * @since Oct 29, 2014
-    * 
+    *
     */
    public static void printHeaders ()
    {
@@ -49,11 +50,11 @@ public class PrintHealthHelper
 
    /**
     * Represents printHeaders
-    * 
+    *
     * @param stream
-    * 
+    *
     * @since Oct 24, 2014
-    * 
+    *
     */
    public static void printHeadersInternal (final PrintStream stream)
    {
@@ -63,11 +64,11 @@ public class PrintHealthHelper
 
    /**
     * Represents print
-    * 
+    *
     * @param artifact
     * @param stream
     * @since Oct 29, 2014
-    * 
+    *
     */
    public static void print (final HealthArtifact artifact, final PrintStream stream)
    {
@@ -77,10 +78,24 @@ public class PrintHealthHelper
 
    /**
     * Represents print
-    * 
+    *
+    * @param artifact
+    * @param stream
+    * @since Dic 09, 2014
+    *
+    */
+   public static void print (final Project artifact, final PrintStream stream)
+   {
+      printInternal (artifact, stream);
+   }
+
+
+   /**
+    * Represents print
+    *
     * @param artifact
     * @since Oct 29, 2014
-    * 
+    *
     */
    public static void print (final HealthArtifact artifact)
    {
@@ -90,11 +105,11 @@ public class PrintHealthHelper
 
    /**
     * Represents print
-    * 
+    *
     * @param artifact
     * @param stream
     * @since Oct 24, 2014
-    * 
+    *
     */
    public static void printInternal (final HealthArtifact artifact, final PrintStream stream)
    {
@@ -103,7 +118,22 @@ public class PrintHealthHelper
 
 
    /**
-    * 
+    * Represents print
+    *
+    * @param artifact
+    * @param stream
+    * @since Dic 09, 2014
+    *
+    */
+   static void printInternal (final Project artifact, final PrintStream stream)
+   {
+      stream.append (String.format ("%-40s %s \n", artifact.getCompletePath (), getActiveServerText (artifact
+            .isStatus ())));
+   }
+
+
+   /**
+    *
     * @param active
     * @return string
     * */

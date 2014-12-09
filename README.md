@@ -16,3 +16,5 @@ Parameters:
 Read each line of the file in this format `hostname.com,port`
 
 For the balancer urls by default uses 8180 as port
+
+For projects you need launch the project-health.launch in eclipse, will look for a project-list.txt on c:, the format is: server,port,contextpath

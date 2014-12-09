@@ -10,11 +10,11 @@ import java.net.Socket;
 
 /**
  * Service that check if a host is available.
- * 
+ *
  * @author Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
- * 
+ *
  */
 public class ServiceCheckerHealthChild implements Runnable
 {
@@ -23,7 +23,7 @@ public class ServiceCheckerHealthChild implements Runnable
 
    /**
     * Constructs an instance of ServiceCheckerHealthChild object.
-    * 
+    *
     * @param value
     */
    public ServiceCheckerHealthChild (final HealthArtifact value)
@@ -34,12 +34,12 @@ public class ServiceCheckerHealthChild implements Runnable
 
    /**
     * Creates a Socket to try to connect to a specified host and port.
-    * 
+    *
     * @param serverAddress
     * @param port
     * @return boolean
     * @since Oct 24, 2014
-    * 
+    *
     */
    private boolean hostAvailabilityCheck (final String serverAddress, final int port)
    {
@@ -58,11 +58,10 @@ public class ServiceCheckerHealthChild implements Runnable
 
    /**
     * Overrides run
-    * 
+    *
     * @since Oct 24, 2014
     * @see java.lang.Runnable#run()
     */
-   @Override
    public void run ()
    {
       artifact.setStatus (hostAvailabilityCheck (artifact.getServer (), artifact.getPort ()));
