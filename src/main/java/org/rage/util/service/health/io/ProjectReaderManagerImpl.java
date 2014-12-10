@@ -5,33 +5,39 @@ package org.rage.util.service.health.io;
 
 
 import org.apache.commons.io.FileUtils;
-import org.rage.util.service.health.pojo.Project;
+import org.rage.util.service.health.pojo.ProjectExtended;
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * ProjectReaderManagerImpl represents ...
+ * Used for AppVersion-xml and the GET to the AppVersion 
  *
  * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
  * @version $Id$
  * @since 09/12/2014
  *
- * @todo Complete description
  */
 public class ProjectReaderManagerImpl
 {
-
-   private List <Project> projects;
+   private List <ProjectExtended> projects;
    private final String   fileName;
+   private boolean readTargetVersion = Boolean.FALSE;
 
 
    public ProjectReaderManagerImpl (final String value)
    {
       this.fileName = value;
+      readFile ();
+   }
+   
+   public ProjectReaderManagerImpl (final String value, boolean readTargetVersionValue)
+   {
+      this.fileName = value;
+      this.readTargetVersion = readTargetVersionValue;
       readFile ();
    }
 
@@ -47,14 +53,18 @@ public class ProjectReaderManagerImpl
       try
       {
          final List <String> lines = FileUtils.readLines (file, "UTF-8");
-         projects = new ArrayList <Project> ();
+         projects = new ArrayList <ProjectExtended> ();
 
          for (final String line : lines)
          {
             if (ReaderHelper.includeLine (line))
             {
                final String[] data = line.split (",");
-               projects.add (new Project (data[0], new Integer (data[1]), data[2]));
+               if(readTargetVersion){
+            	   projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2], data[3]));
+               }else{
+            	   projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2]));
+               }
             }
          }
       }
@@ -72,7 +82,7 @@ public class ProjectReaderManagerImpl
     * @return projects
     * @since 09/12/2014
     */
-   public List <Project> getServiceList ()
+   public List <ProjectExtended> getServiceList ()
    {
       return projects;
    }

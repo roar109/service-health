@@ -5,6 +5,7 @@ package org.rage.util.service.health.checker;
 
 
 import org.rage.util.service.health.pojo.Project;
+import org.rage.util.service.health.pojo.ProjectExtended;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -21,7 +22,7 @@ import java.util.concurrent.Executors;
  */
 public class ProjectHealthCheckMain
 {
-   private final List <Project> projects;
+   private final List <ProjectExtended> projects;
 
 
    /**
@@ -29,7 +30,7 @@ public class ProjectHealthCheckMain
     *
     * @param value
     */
-   public ProjectHealthCheckMain (final List <Project> value)
+   public ProjectHealthCheckMain (final List <ProjectExtended> value)
    {
       this.projects = value;
    }
@@ -42,7 +43,7 @@ public class ProjectHealthCheckMain
     * @since Oct 24, 2014
     *
     */
-   public List <Project> runAllAndWait ()
+   public List <ProjectExtended> runAllAndWait ()
    {
       /* Create a fixed pool of threads to handle all the artifacts at the same time. */
       final ExecutorService executor = Executors.newFixedThreadPool (projects.size ());

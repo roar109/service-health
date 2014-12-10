@@ -1,6 +1,7 @@
 package org.rage.util.service.health.service;
 
 
+import org.rage.util.service.health.checker.AppVersionCheckerMain;
 import org.rage.util.service.health.checker.ProjectHealthCheckMain;
 import org.rage.util.service.health.checker.ServiceHealthCheckerMain;
 import org.rage.util.service.health.io.BalancerReaderManagerImpl;
@@ -9,11 +10,11 @@ import org.rage.util.service.health.io.ReaderManager;
 import org.rage.util.service.health.io.ServerReaderManagerImpl;
 import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.pojo.Project;
+import org.rage.util.service.health.pojo.ProjectExtended;
 import org.rage.util.service.health.util.OutputResultHelper;
 import org.rage.util.service.health.util.PrintHealthHelper;
 
 import java.io.PrintStream;
-
 import java.util.List;
 
 
@@ -75,6 +76,21 @@ public class HealthCheckerService
       outputStream.println ("\nFinish health service");
    }
 
+   /**
+    * @param args
+    * */
+   public void executeAppVersionFlow (final String[] args)
+   {
+      checkPrintStream ();
+      if (args.length == 0)
+      {
+         outputStream.println ("No file specified to analyze. Shutdown program...");
+         System.exit (1);
+      }
+      outputStream.println ("Starting health service\n");
+      checkAppVersionHealth(args[0]);
+      outputStream.println ("\nFinish health service");
+   }
 
    /**
     * Represents checkServersHealth
@@ -132,7 +148,7 @@ public class HealthCheckerService
       checkPrintStream ();
       final ProjectReaderManagerImpl svs = new ProjectReaderManagerImpl (fileName);
       final ProjectHealthCheckMain checker = new ProjectHealthCheckMain (svs.getServiceList ());
-      final List <Project> artifacts = checker.runAllAndWait ();
+      final List <ProjectExtended> artifacts = checker.runAllAndWait ();
 
       PrintHealthHelper.printHeaders (outputStream);
       for (final Project artifact : artifacts)
@@ -141,6 +157,19 @@ public class HealthCheckerService
       }
    }
 
+   public void checkAppVersionHealth (final String fileName)
+   {
+      checkPrintStream ();
+      final ProjectReaderManagerImpl svs = new ProjectReaderManagerImpl (fileName, Boolean.TRUE);
+      final AppVersionCheckerMain checker = new AppVersionCheckerMain (svs.getServiceList ());
+      final List <ProjectExtended> artifacts = checker.runAllAndWait ();
+
+      PrintHealthHelper.printHeaders (outputStream);
+      for (final Project artifact : artifacts)
+      {
+         PrintHealthHelper.print (artifact, outputStream);
+      }
+   }
 
    /**
     * Review if the output has been initialized. Checks the printToFile property.

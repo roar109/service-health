@@ -3,6 +3,7 @@ package org.rage.util.service.health.util;
 
 import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.pojo.Project;
+import org.rage.util.service.health.pojo.ProjectExtended;
 
 import java.io.PrintStream;
 
@@ -127,8 +128,8 @@ public class PrintHealthHelper
     */
    static void printInternal (final Project artifact, final PrintStream stream)
    {
-      stream.append (String.format ("%-40s %s \n", artifact.getCompletePath (), getActiveServerText (artifact
-            .isStatus ())));
+      stream.append (String.format ("%-40s %s %s \n", artifact.getCompletePath (), 
+    		  getActiveServerText (artifact.isStatus ()), getVersionMatchText(artifact)));
    }
 
 
@@ -140,5 +141,25 @@ public class PrintHealthHelper
    private static String getActiveServerText (final boolean active)
    {
       return active ? "ACTIVE" : "UNAVAILABLE";
+   }
+   
+   /**
+   *
+   * @param project
+   * @return string
+   * */
+   private static String getVersionMatchText (final Project project)
+   {
+	  if(project instanceof ProjectExtended){
+		  ProjectExtended pv  = ((ProjectExtended)project);
+		  if(pv.getTargetVersion() != null){
+			  return pv.isSameVersion() ? "MATCH" : "NOT MATCH";
+		  }else{
+			  return "";
+		  }
+	  }else{
+		  return "";
+	  }
+	  
    }
 }

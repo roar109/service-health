@@ -33,7 +33,6 @@ public class ProjectCheckerHealthChild implements Runnable
    private final static String URL_SEPARATOR = "/";
    private final static String PROTOCOL      = "http";
 
-
    /**
     * @param projectValue
     * */
