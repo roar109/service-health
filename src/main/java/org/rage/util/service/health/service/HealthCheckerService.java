@@ -15,6 +15,7 @@ import org.rage.util.service.health.util.OutputResultHelper;
 import org.rage.util.service.health.util.PrintHealthHelper;
 
 import java.io.PrintStream;
+
 import java.util.List;
 
 
@@ -76,6 +77,7 @@ public class HealthCheckerService
       outputStream.println ("\nFinish health service");
    }
 
+
    /**
     * @param args
     * */
@@ -88,9 +90,10 @@ public class HealthCheckerService
          System.exit (1);
       }
       outputStream.println ("Starting health service\n");
-      checkAppVersionHealth(args[0]);
+      checkAppVersionHealth (args[0]);
       outputStream.println ("\nFinish health service");
    }
+
 
    /**
     * Represents checkServersHealth
@@ -157,6 +160,14 @@ public class HealthCheckerService
       }
    }
 
+
+   /**
+    * Represents checkAppVersionHealth
+    *
+    * @param fileName
+    * @since 10/12/2014
+    *
+    */
    public void checkAppVersionHealth (final String fileName)
    {
       checkPrintStream ();
@@ -170,6 +181,7 @@ public class HealthCheckerService
          PrintHealthHelper.print (artifact, outputStream);
       }
    }
+
 
    /**
     * Review if the output has been initialized. Checks the printToFile property.

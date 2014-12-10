@@ -8,13 +8,13 @@ import org.apache.commons.io.FileUtils;
 import org.rage.util.service.health.pojo.ProjectExtended;
 
 import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * ProjectReaderManagerImpl represents ...
- * Used for AppVersion-xml and the GET to the AppVersion 
+ * ProjectReaderManagerImpl represents ... Used for AppVersion-xml and the GET to the AppVersion
  *
  * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
  * @version $Id$
@@ -24,17 +24,29 @@ import java.util.List;
 public class ProjectReaderManagerImpl
 {
    private List <ProjectExtended> projects;
-   private final String   fileName;
-   private boolean readTargetVersion = Boolean.FALSE;
+   private final String           fileName;
+   private boolean                readTargetVersion = Boolean.FALSE;
 
 
+   /**
+    * Constructs an instance of ProjectReaderManagerImpl object.
+    * 
+    * @param value
+    */
    public ProjectReaderManagerImpl (final String value)
    {
       this.fileName = value;
       readFile ();
    }
-   
-   public ProjectReaderManagerImpl (final String value, boolean readTargetVersionValue)
+
+
+   /**
+    * Constructs an instance of ProjectReaderManagerImpl object.
+    * 
+    * @param value
+    * @param readTargetVersionValue
+    */
+   public ProjectReaderManagerImpl (final String value, final boolean readTargetVersionValue)
    {
       this.fileName = value;
       this.readTargetVersion = readTargetVersionValue;
@@ -60,10 +72,13 @@ public class ProjectReaderManagerImpl
             if (ReaderHelper.includeLine (line))
             {
                final String[] data = line.split (",");
-               if(readTargetVersion){
-            	   projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2], data[3]));
-               }else{
-            	   projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2]));
+               if (readTargetVersion)
+               {
+                  projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2], data[3]));
+               }
+               else
+               {
+                  projects.add (new ProjectExtended (data[0], new Integer (data[1]), data[2]));
                }
             }
          }

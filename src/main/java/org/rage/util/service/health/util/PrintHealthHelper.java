@@ -128,8 +128,8 @@ public class PrintHealthHelper
     */
    static void printInternal (final Project artifact, final PrintStream stream)
    {
-      stream.append (String.format ("%-40s %s %s \n", artifact.getCompletePath (), 
-    		  getActiveServerText (artifact.isStatus ()), getVersionMatchText(artifact)));
+      stream.append (String.format ("%-40s %s %s \n", artifact.getCompletePath (), getActiveServerText (artifact
+            .isStatus ()), getVersionMatchText (artifact)));
    }
 
 
@@ -142,24 +142,23 @@ public class PrintHealthHelper
    {
       return active ? "ACTIVE" : "UNAVAILABLE";
    }
-   
+
+
    /**
-   *
-   * @param project
-   * @return string
-   * */
+    *
+    * @param project
+    * @return string
+    * */
    private static String getVersionMatchText (final Project project)
    {
-	  if(project instanceof ProjectExtended){
-		  ProjectExtended pv  = ((ProjectExtended)project);
-		  if(pv.getTargetVersion() != null){
-			  return pv.isSameVersion() ? "MATCH" : "NOT MATCH";
-		  }else{
-			  return "";
-		  }
-	  }else{
-		  return "";
-	  }
-	  
+      if (project instanceof ProjectExtended)
+      {
+         final ProjectExtended pv = ((ProjectExtended) project);
+         if (pv.getTargetVersion () != null)
+         {
+            return pv.isSameVersion () ? "MATCH" : "NOT MATCH";
+         }
+      }
+      return "";
    }
 }
