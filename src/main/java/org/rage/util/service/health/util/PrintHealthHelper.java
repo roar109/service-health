@@ -154,7 +154,7 @@ public class PrintHealthHelper
       if (project instanceof ProjectExtended)
       {
          final ProjectExtended pv = ((ProjectExtended) project);
-         if (pv.getTargetVersion () != null)
+         if ( (pv.getTargetVersion () != null) && pv.isStatus ())
          {
             return pv.isSameVersion () ? "MATCH" : "NOT MATCH";
          }
