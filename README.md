@@ -17,16 +17,14 @@ Read each line of the file in this format `hostname.com,port`
 
 For the balancer urls by default uses 8180 as port
 
-WARs
-==============
+### WARs
 For deployed wars this tool can:
 - Check if are up (Do a GET request to the AppVersion servlet)
 - Check if the deployed version match the versions passed (Do a GET request to the AppVersion and get the response as xml)
  
 See `example-files` folder to see input file examples.
 
-TODO
-==============
+### TODO
 - Pass as a parameter balancer port (optional)
 - Path to check if is alive a war (optional)
 - Generate a war that checks automatically each X time the servers health.
