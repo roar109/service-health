@@ -21,3 +21,5 @@ For projects you need launch the project-health.launch in eclipse it will look f
 
 For reading the AppVersion you need to launch the projectversion-health.launch and the format 
  for the file is "server,port,context,expectedVersion"
+ 
+ See `example-files` folder to see input file examples.
