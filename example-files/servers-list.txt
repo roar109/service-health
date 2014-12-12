@@ -1,2 +1,2 @@
+#Check if a server is up
 #someserver.domain.com,port
-someserver.domain.com,8080

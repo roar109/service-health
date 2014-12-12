@@ -1,2 +1,2 @@
+#Checks if a war is up, do a get request to the AppVersion servlet
 #someserver.domain.com,8080,ApplicationContext
-someserver.domain.com,8080,myapp-10.0.0

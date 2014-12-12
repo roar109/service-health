@@ -1,2 +1,2 @@
+#Check if the version of the deployed war match with the ManifestVersion
 #someserver.domain.com,8080,ApplicationContext,ManifestVersion
-someserver.domain.com,8080,myapp-1.0.0,1.0.0
