@@ -1,0 +1,2 @@
+#someserver.domain
+someserver.domain.com

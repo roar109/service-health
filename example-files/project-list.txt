@@ -1,0 +1,2 @@
+#someserver.domain.com,8080,ApplicationContext
+someserver.domain.com,8080,myapp-10.0.0

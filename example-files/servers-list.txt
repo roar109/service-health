@@ -1,0 +1,2 @@
+#someserver.domain.com,port
+someserver.domain.com,8080
