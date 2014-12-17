@@ -1,4 +1,4 @@
-package org.rage.util.service.health.util;
+package org.rage.util.service.health.printer;
 
 
 import org.rage.util.service.health.pojo.HealthArtifact;
@@ -16,12 +16,29 @@ import java.io.PrintStream;
  * @since Oct 24, 2014
  *
  */
-public class PrintHealthHelper
+public class HealthPrinterFactory implements HealthPrinter
 {
    private static final String SERVER_NAME_LABEL = "Host";
    private static final String STATUS_NAME_LABEL = "Status";
    private static PrintStream  OUTPUT_STREAM     = System.out;
-
+   private static HealthPrinter[] instances = new HealthPrinter[HealthPrinterType.getCount()];
+   
+   private HealthPrinterFactory(){}
+   
+   
+   public static HealthPrinter instance(HealthPrinterType type){
+	   HealthPrinter healthPrinter = instances[type.getValue() - 1];
+	   
+	   if(healthPrinter == null){
+		   switch(type){
+			   case PROJECT_HEALTH: healthPrinter = new HealthPrinterFactory(); break;
+			   case SERVICE_HEALTH: healthPrinter = new HealthPrinterFactory(); break;
+			   case	VERSION: healthPrinter = new HealthPrinterVersionImpl(); break;
+		   }
+		   instances[type.getValue() - 1] =  healthPrinter;
+	   }
+	   return healthPrinter;
+   }
 
    /**
     * Represents printHeaders
@@ -31,7 +48,7 @@ public class PrintHealthHelper
     * @since Oct 29, 2014
     *
     */
-   public static void printHeaders (final PrintStream stream)
+   public void printHeaders (final PrintStream stream)
    {
       printHeadersInternal (stream);
    }
@@ -43,7 +60,7 @@ public class PrintHealthHelper
     * @since Oct 29, 2014
     *
     */
-   public static void printHeaders ()
+   public void printHeaders ()
    {
       printHeadersInternal (OUTPUT_STREAM);
    }
@@ -57,7 +74,7 @@ public class PrintHealthHelper
     * @since Oct 24, 2014
     *
     */
-   public static void printHeadersInternal (final PrintStream stream)
+   private static void printHeadersInternal (final PrintStream stream)
    {
       stream.append (String.format ("%-40s %s \n", SERVER_NAME_LABEL, STATUS_NAME_LABEL));
    }
@@ -71,7 +88,7 @@ public class PrintHealthHelper
     * @since Oct 29, 2014
     *
     */
-   public static void print (final HealthArtifact artifact, final PrintStream stream)
+   public void print (final HealthArtifact artifact, final PrintStream stream)
    {
       printInternal (artifact, stream);
    }
@@ -85,7 +102,7 @@ public class PrintHealthHelper
     * @since Dic 09, 2014
     *
     */
-   public static void print (final Project artifact, final PrintStream stream)
+   public void print (final Project artifact, final PrintStream stream)
    {
       printInternal (artifact, stream);
    }
@@ -98,7 +115,7 @@ public class PrintHealthHelper
     * @since Oct 29, 2014
     *
     */
-   public static void print (final HealthArtifact artifact)
+   public void print (final HealthArtifact artifact)
    {
       printInternal (artifact, OUTPUT_STREAM);
    }

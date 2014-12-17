@@ -11,11 +11,12 @@ import org.rage.util.service.health.io.ServerReaderManagerImpl;
 import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.pojo.Project;
 import org.rage.util.service.health.pojo.ProjectExtended;
+import org.rage.util.service.health.printer.HealthPrinter;
+import org.rage.util.service.health.printer.HealthPrinterFactory;
+import org.rage.util.service.health.printer.HealthPrinterType;
 import org.rage.util.service.health.util.OutputResultHelper;
-import org.rage.util.service.health.util.PrintHealthHelper;
 
 import java.io.PrintStream;
-
 import java.util.List;
 
 
@@ -109,10 +110,11 @@ public class HealthCheckerService
       final ServiceHealthCheckerMain checkerVIP = new ServiceHealthCheckerMain (svsBalancer.getServiceList ());
       final List <HealthArtifact> artifactsVip = checkerVIP.runAllAndWait ();
 
-      PrintHealthHelper.printHeaders (outputStream);
+      HealthPrinter printer = HealthPrinterFactory.instance(HealthPrinterType.SERVICE_HEALTH);
+      printer.printHeaders (outputStream);
       for (final HealthArtifact artifact : artifactsVip)
       {
-         PrintHealthHelper.print (artifact, outputStream);
+    	  printer.print (artifact, outputStream);
       }
    }
 
@@ -131,10 +133,11 @@ public class HealthCheckerService
       final ServiceHealthCheckerMain checker = new ServiceHealthCheckerMain (svs.getServiceList ());
       final List <HealthArtifact> artifacts = checker.runAllAndWait ();
 
-      PrintHealthHelper.printHeaders (outputStream);
+      HealthPrinter printer = HealthPrinterFactory.instance(HealthPrinterType.SERVICE_HEALTH);
+      printer.printHeaders (outputStream);
       for (final HealthArtifact artifact : artifacts)
       {
-         PrintHealthHelper.print (artifact, outputStream);
+    	  printer.print (artifact, outputStream);
       }
    }
 
@@ -153,10 +156,11 @@ public class HealthCheckerService
       final ProjectHealthCheckMain checker = new ProjectHealthCheckMain (svs.getServiceList ());
       final List <ProjectExtended> artifacts = checker.runAllAndWait ();
 
-      PrintHealthHelper.printHeaders (outputStream);
+      HealthPrinter printer = HealthPrinterFactory.instance(HealthPrinterType.PROJECT_HEALTH);
+      printer.printHeaders (outputStream);
       for (final Project artifact : artifacts)
       {
-         PrintHealthHelper.print (artifact, outputStream);
+    	  printer.print (artifact, outputStream);
       }
    }
 
@@ -174,11 +178,11 @@ public class HealthCheckerService
       final ProjectReaderManagerImpl svs = new ProjectReaderManagerImpl (fileName, Boolean.TRUE);
       final AppVersionCheckerMain checker = new AppVersionCheckerMain (svs.getServiceList ());
       final List <ProjectExtended> artifacts = checker.runAllAndWait ();
-
-      PrintHealthHelper.printHeaders (outputStream);
+      
+      HealthPrinter printer = HealthPrinterFactory.instance(HealthPrinterType.VERSION);
       for (final Project artifact : artifacts)
       {
-         PrintHealthHelper.print (artifact, outputStream);
+    	  printer.print (artifact, outputStream);
       }
    }
 
