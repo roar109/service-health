@@ -18,27 +18,48 @@ import java.io.PrintStream;
  */
 public class HealthPrinterFactory implements HealthPrinter
 {
-   private static final String SERVER_NAME_LABEL = "Host";
-   private static final String STATUS_NAME_LABEL = "Status";
-   private static PrintStream  OUTPUT_STREAM     = System.out;
-   private static HealthPrinter[] instances = new HealthPrinter[HealthPrinterType.getCount()];
-   
-   private HealthPrinterFactory(){}
-   
-   
-   public static HealthPrinter instance(HealthPrinterType type){
-	   HealthPrinter healthPrinter = instances[type.getValue() - 1];
-	   
-	   if(healthPrinter == null){
-		   switch(type){
-			   case PROJECT_HEALTH: healthPrinter = new HealthPrinterFactory(); break;
-			   case SERVICE_HEALTH: healthPrinter = new HealthPrinterFactory(); break;
-			   case	VERSION: healthPrinter = new HealthPrinterVersionImpl(); break;
-		   }
-		   instances[type.getValue() - 1] =  healthPrinter;
-	   }
-	   return healthPrinter;
+   private static final String    SERVER_NAME_LABEL = "Host";
+   private static final String    STATUS_NAME_LABEL = "Status";
+   private static PrintStream     OUTPUT_STREAM     = System.out;
+   private static HealthPrinter[] instances         = new HealthPrinter[HealthPrinterType.getCount ()];
+
+
+   private HealthPrinterFactory ()
+   {
    }
+
+
+   /**
+    * Returns the instance of the printer associated with the type
+    *
+    * @param type
+    * @return healthPrinter
+    * @since 18/12/2014
+    *
+    */
+   public static HealthPrinter instance (final HealthPrinterType type)
+   {
+      HealthPrinter healthPrinter = instances[type.getValue () - 1];
+
+      if (healthPrinter == null)
+      {
+         switch (type)
+         {
+            case PROJECT_HEALTH :
+               healthPrinter = new HealthPrinterFactory ();
+               break;
+            case SERVICE_HEALTH :
+               healthPrinter = new HealthPrinterFactory ();
+               break;
+            case VERSION :
+               healthPrinter = new HealthPrinterVersionImpl ();
+               break;
+         }
+         instances[type.getValue () - 1] = healthPrinter;
+      }
+      return healthPrinter;
+   }
+
 
    /**
     * Represents printHeaders

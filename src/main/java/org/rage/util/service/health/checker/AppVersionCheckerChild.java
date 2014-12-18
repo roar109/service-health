@@ -90,8 +90,13 @@ public class AppVersionCheckerChild implements Runnable
     */
    public void run ()
    {
-      this.project.setStatus (hostAvailabilityCheck ());
-      AppVersionCheckerHelper.checkVersion (project);
+      final boolean hostActive = hostAvailabilityCheck ();
+      this.project.setStatus (hostActive);
+
+      if (hostActive)
+      {
+         AppVersionCheckerHelper.checkVersion (project);
+      }
    }
 
 }

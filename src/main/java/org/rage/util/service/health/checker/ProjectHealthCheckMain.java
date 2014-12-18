@@ -1,7 +1,6 @@
 package org.rage.util.service.health.checker;
 
 
-import org.rage.util.service.health.pojo.Project;
 import org.rage.util.service.health.pojo.ProjectExtended;
 
 import java.util.List;
@@ -20,6 +19,7 @@ import java.util.concurrent.Executors;
 public class ProjectHealthCheckMain
 {
    private final List <ProjectExtended> projects;
+   private boolean                      useAppVersion = Boolean.FALSE;
 
 
    /**
@@ -30,6 +30,19 @@ public class ProjectHealthCheckMain
    public ProjectHealthCheckMain (final List <ProjectExtended> value)
    {
       this.projects = value;
+   }
+
+
+   /**
+    * Constructs an instance of ProjectHealthCheckMain object.
+    *
+    * @param value
+    * @param useAppVersionValue
+    */
+   public ProjectHealthCheckMain (final List <ProjectExtended> value, final boolean useAppVersionValue)
+   {
+      this.projects = value;
+      this.useAppVersion = useAppVersionValue;
    }
 
 
@@ -45,12 +58,17 @@ public class ProjectHealthCheckMain
       /* Create a fixed pool of threads to handle all the artifacts at the same time. */
       final ExecutorService executor = Executors.newFixedThreadPool (projects.size ());
 
-      for (final Project artifact : projects)
+      for (final ProjectExtended artifact : projects)
       {
-         final Runnable child = new ProjectCheckerHealthChild (artifact);
-         executor.execute (child);
+         if (useAppVersion)
+         {
+            executor.execute (new AppVersionCheckerChild (artifact));
+         }
+         else
+         {
+            executor.execute (new ProjectCheckerHealthChild (artifact));
+         }
       }
-
       executor.shutdown ();
       while ( !executor.isTerminated ())
       {
