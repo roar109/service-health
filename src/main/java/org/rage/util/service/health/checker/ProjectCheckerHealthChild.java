@@ -1,6 +1,3 @@
-/*
- * Copyright © 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package org.rage.util.service.health.checker;
 
 
@@ -20,11 +17,10 @@ import java.io.IOException;
 /**
  * ProjectCheckerHealthChild represents ...
  *
- * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since 09/12/2014
  *
- * @todo Complete description
  */
 public class ProjectCheckerHealthChild implements Runnable
 {
@@ -32,6 +28,7 @@ public class ProjectCheckerHealthChild implements Runnable
    private final static String APP_VERSION   = "AppVersion";
    private final static String URL_SEPARATOR = "/";
    private final static String PROTOCOL      = "http";
+
 
    /**
     * @param projectValue

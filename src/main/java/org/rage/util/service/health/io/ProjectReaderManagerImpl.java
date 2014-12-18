@@ -1,6 +1,3 @@
-/*
- * Copyright © 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package org.rage.util.service.health.io;
 
 
@@ -16,7 +13,7 @@ import java.util.List;
 /**
  * ProjectReaderManagerImpl represents ... Used for AppVersion-xml and the GET to the AppVersion
  *
- * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since 09/12/2014
  *
@@ -30,7 +27,7 @@ public class ProjectReaderManagerImpl
 
    /**
     * Constructs an instance of ProjectReaderManagerImpl object.
-    * 
+    *
     * @param value
     */
    public ProjectReaderManagerImpl (final String value)
@@ -42,7 +39,7 @@ public class ProjectReaderManagerImpl
 
    /**
     * Constructs an instance of ProjectReaderManagerImpl object.
-    * 
+    *
     * @param value
     * @param readTargetVersionValue
     */

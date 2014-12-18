@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * AppVersionCheckerChild represents ...
  *
- * @author <a href="mailto:hmendoza@24hourfit.com">hector.mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since 10/12/2014
  *

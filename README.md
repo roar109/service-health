@@ -24,6 +24,13 @@ For deployed wars this tool can:
  
 See `example-files` folder to see input file examples.
 
+Example commands from maven console
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleHealthChecker -Dexec.args="example-files\servers-list.txt example-files\servers-list-vip.txt"
+
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleProjectHealthChecker -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt
+
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleAppVersionChecker -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
+
 ### TODO
 - Pass as a parameter balancer port (optional)
 - Path to check if is alive a war (optional)
