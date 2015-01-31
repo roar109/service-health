@@ -14,8 +14,7 @@ import org.rage.util.service.health.printer.HealthPrinter;
 import org.rage.util.service.health.printer.HealthPrinterFactory;
 import org.rage.util.service.health.printer.HealthPrinterType;
 import org.rage.util.service.health.util.OutputResultHelper;
-
-import java.io.PrintStream;
+import org.rage.util.service.health.util.PrintStreamDecorator;
 
 import java.util.List;
 
@@ -30,9 +29,9 @@ import java.util.List;
  */
 public class HealthCheckerService
 {
-   private boolean     printToFile  = Boolean.FALSE;
-   private String      resultsPath  = null;
-   private PrintStream outputStream = null;
+   private boolean              printToFile  = Boolean.FALSE;
+   private String               resultsPath  = null;
+   private PrintStreamDecorator outputStream = null;
 
 
    /**
@@ -209,7 +208,7 @@ public class HealthCheckerService
       }
       else
       {
-         outputStream = System.out;
+         outputStream = new PrintStreamDecorator (System.out);
       }
    }
 

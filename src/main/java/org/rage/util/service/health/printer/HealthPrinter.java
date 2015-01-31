@@ -3,8 +3,7 @@ package org.rage.util.service.health.printer;
 
 import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.pojo.Project;
-
-import java.io.PrintStream;
+import org.rage.util.service.health.util.PrintStreamDecorator;
 
 
 /**
@@ -33,7 +32,7 @@ public interface HealthPrinter
     * @since 18/12/2014
     *
     */
-   void printHeaders (final PrintStream stream);
+   void printHeaders (final PrintStreamDecorator stream);
 
 
    /**
@@ -44,7 +43,7 @@ public interface HealthPrinter
     * @since 18/12/2014
     *
     */
-   void print (final HealthArtifact artifact, final PrintStream stream);
+   void print (final HealthArtifact artifact, final PrintStreamDecorator stream);
 
 
    /**
@@ -65,5 +64,5 @@ public interface HealthPrinter
     * @since 18/12/2014
     *
     */
-   void print (final Project artifact, final PrintStream stream);
+   void print (final Project artifact, final PrintStreamDecorator stream);
 }

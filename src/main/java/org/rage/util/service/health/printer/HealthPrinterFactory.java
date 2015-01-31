@@ -4,6 +4,7 @@ package org.rage.util.service.health.printer;
 import org.rage.util.service.health.pojo.HealthArtifact;
 import org.rage.util.service.health.pojo.Project;
 import org.rage.util.service.health.pojo.ProjectExtended;
+import org.rage.util.service.health.util.PrintStreamDecorator;
 
 import java.io.PrintStream;
 
@@ -69,7 +70,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Oct 29, 2014
     *
     */
-   public void printHeaders (final PrintStream stream)
+   public void printHeaders (final PrintStreamDecorator stream)
    {
       printHeadersInternal (stream);
    }
@@ -83,7 +84,7 @@ public class HealthPrinterFactory implements HealthPrinter
     */
    public void printHeaders ()
    {
-      printHeadersInternal (OUTPUT_STREAM);
+      printHeadersInternal (new PrintStreamDecorator (OUTPUT_STREAM));
    }
 
 
@@ -95,7 +96,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Oct 24, 2014
     *
     */
-   private static void printHeadersInternal (final PrintStream stream)
+   private static void printHeadersInternal (final PrintStreamDecorator stream)
    {
       stream.append (String.format ("%-40s %s \n", SERVER_NAME_LABEL, STATUS_NAME_LABEL));
    }
@@ -109,7 +110,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Oct 29, 2014
     *
     */
-   public void print (final HealthArtifact artifact, final PrintStream stream)
+   public void print (final HealthArtifact artifact, final PrintStreamDecorator stream)
    {
       printInternal (artifact, stream);
    }
@@ -123,7 +124,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Dic 09, 2014
     *
     */
-   public void print (final Project artifact, final PrintStream stream)
+   public void print (final Project artifact, final PrintStreamDecorator stream)
    {
       printInternal (artifact, stream);
    }
@@ -138,7 +139,7 @@ public class HealthPrinterFactory implements HealthPrinter
     */
    public void print (final HealthArtifact artifact)
    {
-      printInternal (artifact, OUTPUT_STREAM);
+      printInternal (artifact, new PrintStreamDecorator (OUTPUT_STREAM));
    }
 
 
@@ -150,7 +151,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Oct 24, 2014
     *
     */
-   public static void printInternal (final HealthArtifact artifact, final PrintStream stream)
+   public static void printInternal (final HealthArtifact artifact, final PrintStreamDecorator stream)
    {
       stream.append (String.format ("%-40s %s \n", artifact.getServer (), getActiveServerText (artifact.isStatus ())));
    }
@@ -164,7 +165,7 @@ public class HealthPrinterFactory implements HealthPrinter
     * @since Dic 09, 2014
     *
     */
-   static void printInternal (final Project artifact, final PrintStream stream)
+   static void printInternal (final Project artifact, final PrintStreamDecorator stream)
    {
       stream.append (String.format ("%-40s %s %s \n", artifact.getCompletePath (), getActiveServerText (artifact
             .isStatus ()), getVersionMatchText (artifact)));

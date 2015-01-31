@@ -17,10 +17,11 @@ import java.io.PrintStream;
 public class OutputResultHelper
 {
    /** OutputResultHelper for output */
-   private static File               output   = null;
+   private static File               output      = null;
    /** OutputResultHelper for ps */
-   static PrintStream                ps       = null;
-   private static OutputResultHelper instance = new OutputResultHelper ();
+   static PrintStreamDecorator       ps          = null;
+   private static OutputResultHelper instance    = new OutputResultHelper ();
+   private static final PrintStream  DEFAULT_OUT = System.out;
 
 
    private OutputResultHelper ()
@@ -43,7 +44,7 @@ public class OutputResultHelper
          try
          {
             output = new File ("results.txt");
-            ps = new PrintStream (output);
+            ps = new PrintStreamDecorator (DEFAULT_OUT, new PrintStream (output));
          }
          catch (final FileNotFoundException e)
          {
@@ -69,7 +70,7 @@ public class OutputResultHelper
          try
          {
             output = new File (fileName);
-            ps = new PrintStream (output);
+            ps = new PrintStreamDecorator (DEFAULT_OUT, new PrintStream (output));
          }
          catch (final FileNotFoundException e)
          {
@@ -87,7 +88,7 @@ public class OutputResultHelper
     * @since Oct 29, 2014
     *
     */
-   public PrintStream getOutputResultsStream ()
+   public PrintStreamDecorator getOutputResultsStream ()
    {
       return ps;
    }
