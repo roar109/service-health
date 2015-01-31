@@ -1,10 +1,9 @@
 package org.rage.util.reader;
 
 
-
-import org.rage.util.service.health.pojo.HealthArtifact;
-
 import java.util.List;
+
+import org.rage.util.model.health.HealthArtifact;
 
 
 /**

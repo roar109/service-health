@@ -1,73 +1,60 @@
 package org.rage.util.model.health;
 
-
 /**
- * HealthArtifact represents ...
- *
- * @author hector.mendoza
- * @version $Id$
- * @since 30/01/2015
- *
- * @todo Complete description
+ * @author <roar109@gmail.com> Hector Mendoza
+ * 
  */
-public interface HealthArtifact
-{
-   /**
-    * Represents getServer
-    *
-    * @return string
-    * @since Oct 28, 2014
-    *
-    */
-   String getServer ();
+public class HealthArtifact {
+	private String server;
+	private int port;
+	private boolean status;
+	private transient String completePath;
+	private Project project;
 
+	public HealthArtifact(String server, int port){
+		this.server = server;
+		this.port = port;
+	}
+	
+	
+	public String getServer() {
+		return server;
+	}
 
-   /**
-    * Represents setServer
-    *
-    * @param server
-    * @since Oct 28, 2014
-    *
-    */
-   void setServer (final String server);
+	public void setServer(String server) {
+		this.server = server;
+	}
 
+	public int getPort() {
+		return port;
+	}
 
-   /**
-    * Represents isStatus
-    *
-    * @return boolean
-    * @since Oct 28, 2014
-    *
-    */
-   boolean isStatus ();
+	public void setPort(int port) {
+		this.port = port;
+	}
 
+	public boolean isStatus() {
+		return status;
+	}
 
-   /**
-    * Represents setStatus
-    *
-    * @param status
-    * @since Oct 28, 2014
-    *
-    */
-   void setStatus (final boolean status);
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
+	public String getCompletePath() {
+		return completePath;
+	}
 
-   /**
-    * Represents setPort
-    *
-    * @param port
-    * @since Oct 28, 2014
-    *
-    */
-   void setPort (int port);
+	public void setCompletePath(String completePath) {
+		this.completePath = completePath;
+	}
 
+	public Project getProject() {
+		return project;
+	}
 
-   /**
-    * Represents getPort
-    *
-    * @return int
-    * @since Oct 28, 2014
-    *
-    */
-   int getPort ();
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 }
