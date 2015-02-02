@@ -12,7 +12,6 @@ import org.rage.util.service.health.impl.ProjectHealthServiceImpl;
  * @version $Id$
  * @since 02/02/2015
  *
- * @todo Complete description
  */
 public class ProjectHealthMain
 {
@@ -23,7 +22,6 @@ public class ProjectHealthMain
     * @param args
     * @since 02/02/2015
     *
-    * @todo complete description
     */
    public static void main (final String[] args)
    {

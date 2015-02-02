@@ -1,60 +1,159 @@
 package org.rage.util.model.health;
 
+
 /**
  * @author <roar109@gmail.com> Hector Mendoza
- * 
+ *
  */
-public class HealthArtifact {
-	private String server;
-	private int port;
-	private boolean status;
-	private transient String completePath;
-	private Project project;
+public class HealthArtifact
+{
+   private String           server;
+   private int              port;
+   private boolean          status;
+   private transient String completePath;
+   private Project          project;
 
-	public HealthArtifact(String server, int port){
-		this.server = server;
-		this.port = port;
-	}
-	
-	
-	public String getServer() {
-		return server;
-	}
 
-	public void setServer(String server) {
-		this.server = server;
-	}
+   /**
+    * Constructs an instance of HealthArtifact object.
+    *
+    * @param server
+    * @param port
+    */
+   public HealthArtifact (final String server, final int port)
+   {
+      this.server = server;
+      this.port = port;
+   }
 
-	public int getPort() {
-		return port;
-	}
 
-	public void setPort(int port) {
-		this.port = port;
-	}
+   /**
+    * Represents getServer
+    *
+    * @return server
+    * @since 02/02/2015
+    *
+    */
+   public String getServer ()
+   {
+      return server;
+   }
 
-	public boolean isStatus() {
-		return status;
-	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+   /**
+    * Represents setServer
+    *
+    * @param server
+    * @since 02/02/2015
+    *
+    */
+   public void setServer (final String server)
+   {
+      this.server = server;
+   }
 
-	public String getCompletePath() {
-		return completePath;
-	}
 
-	public void setCompletePath(String completePath) {
-		this.completePath = completePath;
-	}
+   /**
+    * Represents getPort
+    *
+    * @return
+    * @since 02/02/2015
+    *
+    */
+   public int getPort ()
+   {
+      return port;
+   }
 
-	public Project getProject() {
-		return project;
-	}
 
-	public void setProject(Project project) {
-		this.project = project;
-	}
+   /**
+    * Represents setPort
+    *
+    * @param port
+    * @since 02/02/2015
+    *
+    */
+   public void setPort (final int port)
+   {
+      this.port = port;
+   }
+
+
+   /**
+    * Represents isStatus
+    *
+    * @return
+    * @since 02/02/2015
+    *
+    */
+   public boolean isStatus ()
+   {
+      return status;
+   }
+
+
+   /**
+    * Represents setStatus
+    *
+    * @param status
+    * @since 02/02/2015
+    *
+    */
+   public void setStatus (final boolean status)
+   {
+      this.status = status;
+   }
+
+
+   /**
+    * Represents getCompletePath
+    *
+    * @return
+    * @since 02/02/2015
+    *
+    */
+   public String getCompletePath ()
+   {
+      return completePath;
+   }
+
+
+   /**
+    * Represents setCompletePath
+    *
+    * @param completePath
+    * @since 02/02/2015
+    *
+    */
+   public void setCompletePath (final String completePath)
+   {
+      this.completePath = completePath;
+   }
+
+
+   /**
+    * Represents getProject
+    *
+    * @return project
+    * @since 02/02/2015
+    *
+    */
+   public Project getProject ()
+   {
+      return project;
+   }
+
+
+   /**
+    * Represents setProject
+    *
+    * @param project
+    * @since 02/02/2015
+    *
+    */
+   public void setProject (final Project project)
+   {
+      this.project = project;
+   }
 
 }

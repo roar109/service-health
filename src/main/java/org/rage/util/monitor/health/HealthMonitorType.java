@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.rage.util.monitor.health;
 
 

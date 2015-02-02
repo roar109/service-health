@@ -22,7 +22,6 @@ public class ServerHealthMain
     * @param args
     * @since 02/02/2015
     *
-    * @todo complete description
     */
    public static void main (final String[] args)
    {

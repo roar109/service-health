@@ -26,6 +26,8 @@ public class BalancerFileReaderImpl implements FileReader
 
    /**
     * Constructs an instance of BalancerFileReaderImpl object.
+    * 
+    * @param fileName
     */
    public BalancerFileReaderImpl (final String fileName)
    {
@@ -67,7 +69,6 @@ public class BalancerFileReaderImpl implements FileReader
     *
     * @return artifacts
     * @since Oct 24, 2014
-    * @see org.rage.util.service.health.io.ReaderManager#getServiceList()
     */
    public List <HealthArtifact> getServiceList ()
    {

@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.rage.util.monitor.health.impl;
 
 
@@ -67,6 +64,11 @@ public class ProjectHealthMonitorImpl implements HealthMonitorExecutor
    }
 
 
+   /**
+    * Check a url if gives 200
+    * 
+    * @param boolean
+    * */
    private boolean hostAvailabilityCheck ()
    {
       try

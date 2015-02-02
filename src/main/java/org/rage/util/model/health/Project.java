@@ -1,56 +1,146 @@
 package org.rage.util.model.health;
 
+
 import java.util.HashMap;
+
 
 /**
  * @author <roar109@gmail.com> Hector Mendoza
- * 
+ *
  */
-public class Project {
-	private String projectContext;
-	private HashMap<String, String> attributes = new HashMap<String, String>();
-	private String targetVersion;
-	private boolean sameVersion;
+public class Project
+{
+   private String                   projectContext;
+   private HashMap <String, String> attributes = new HashMap <String, String> ();
+   private String                   targetVersion;
+   private boolean                  sameVersion;
 
-	public Project(final String projectContext) {
-		this.projectContext = projectContext;
-	}
-	
-	public Project(final String projectContext, final String targetVersion) {
-		this.projectContext = projectContext;
-		this.targetVersion = targetVersion;
-	}
 
-	public HashMap<String, String> getAttributes() {
-		return attributes;
-	}
+   /**
+    * Constructs an instance of Project object.
+    * 
+    * @param projectContext
+    */
+   public Project (final String projectContext)
+   {
+      this.projectContext = projectContext;
+   }
 
-	public void setAttributes(HashMap<String, String> attributes) {
-		this.attributes = attributes;
-	}
 
-	public String getTargetVersion() {
-		return targetVersion;
-	}
+   /**
+    * Constructs an instance of Project object.
+    * 
+    * @param projectContext
+    * @param targetVersion
+    */
+   public Project (final String projectContext, final String targetVersion)
+   {
+      this.projectContext = projectContext;
+      this.targetVersion = targetVersion;
+   }
 
-	public void setTargetVersion(String targetVersion) {
-		this.targetVersion = targetVersion;
-	}
 
-	public boolean isSameVersion() {
-		return sameVersion;
-	}
+   /**
+    * Represents getAttributes
+    * 
+    * @return attributes
+    * @since 02/02/2015
+    * 
+    */
+   public HashMap <String, String> getAttributes ()
+   {
+      return attributes;
+   }
 
-	public void setSameVersion(boolean sameVersion) {
-		this.sameVersion = sameVersion;
-	}
 
-	public String getProjectContext() {
-		return projectContext;
-	}
+   /**
+    * Represents setAttributes
+    * 
+    * @param attributes
+    * @since 02/02/2015
+    * 
+    */
+   public void setAttributes (final HashMap <String, String> attributes)
+   {
+      this.attributes = attributes;
+   }
 
-	public void setProjectContext(String projectContext) {
-		this.projectContext = projectContext;
-	}
+
+   /**
+    * Represents getTargetVersion
+    * 
+    * @return targetVersion
+    * @since 02/02/2015
+    * 
+    */
+   public String getTargetVersion ()
+   {
+      return targetVersion;
+   }
+
+
+   /**
+    * Represents setTargetVersion
+    * 
+    * @param targetVersion
+    * @since 02/02/2015
+    * 
+    */
+   public void setTargetVersion (final String targetVersion)
+   {
+      this.targetVersion = targetVersion;
+   }
+
+
+   /**
+    * Represents isSameVersion
+    * 
+    * @return sameVersion
+    * @since 02/02/2015
+    * 
+    */
+   public boolean isSameVersion ()
+   {
+      return sameVersion;
+   }
+
+
+   /**
+    * Represents setSameVersion
+    * 
+    * @param sameVersion
+    * @since 02/02/2015
+    * 
+    */
+   public void setSameVersion (final boolean sameVersion)
+   {
+      this.sameVersion = sameVersion;
+   }
+
+
+   /**
+    * Represents getProjectContext
+    * 
+    * @return projectContext
+    * @since 02/02/2015
+    * 
+    */
+   public String getProjectContext ()
+   {
+      return projectContext;
+   }
+
+
+   /**
+    * Represents setProjectContext
+    * 
+    * @param projectContext
+    * @since 02/02/2015
+    * 
+    */
+   public void setProjectContext (final String projectContext)
+   {
+      this.projectContext = projectContext;
+   }
 
 }

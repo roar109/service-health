@@ -22,11 +22,11 @@ public final class ReaderHelper
 {
    /**
     * Check the passed string against some basic validates to discard white spaces and comments.
-    * 
+    *
     * @param line
     * @return boolean
     * @since 30/01/2015
-    * 
+    *
     */
    public static boolean includeLine (final String line)
    {
@@ -40,6 +40,14 @@ public final class ReaderHelper
    }
 
 
+   /**
+    * Represents getLinesFromFile
+    *
+    * @param fileName
+    * @return list
+    * @since 02/02/2015
+    *
+    */
    public static List <String> getLinesFromFile (final String fileName)
    {
       final File file = new File (fileName);

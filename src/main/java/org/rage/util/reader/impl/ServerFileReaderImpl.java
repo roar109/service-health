@@ -26,6 +26,8 @@ public class ServerFileReaderImpl implements FileReader
 
    /**
     * Constructs an instance of ServerFileReaderImpl object.
+    * 
+    * @param fileName
     */
    public ServerFileReaderImpl (final String fileName)
    {
@@ -73,11 +75,9 @@ public class ServerFileReaderImpl implements FileReader
     *
     * @return artifacts
     * @since Oct 24, 2014
-    * @see org.rage.util.service.health.io.ReaderManager#getServiceList()
     */
    public List <HealthArtifact> getServiceList ()
    {
-      readFile ();// TODO check this - do it different
       return artifacts;
    }
 }

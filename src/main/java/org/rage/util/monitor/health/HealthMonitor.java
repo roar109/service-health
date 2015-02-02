@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.rage.util.monitor.health;
 
 
@@ -18,11 +15,11 @@ public interface HealthMonitor
 
    /**
     * Represents runAllAndWait
-    * 
+    *
     * @param healthMonitorType
     * @return list
     * @since 02/02/2015
-    * 
+    *
     */
    List <HealthArtifact> runAllAndWait (HealthMonitorType healthMonitorType);
 }

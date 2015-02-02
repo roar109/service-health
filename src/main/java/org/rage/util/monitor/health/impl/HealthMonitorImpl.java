@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.rage.util.monitor.health.impl;
 
 
@@ -24,7 +21,7 @@ public class HealthMonitorImpl implements HealthMonitor
 
    /**
     * Constructs an instance of HealthMonitorImpl object.
-    * 
+    *
     * @param artifacts
     */
    public HealthMonitorImpl (final List <HealthArtifact> artifacts)
@@ -35,7 +32,7 @@ public class HealthMonitorImpl implements HealthMonitor
 
    /**
     * Overrides runAllAndWait
-    * 
+    *
     * @param healthMonitorType
     * @return artifacts
     * @since 02/02/2015
