@@ -19,9 +19,7 @@ import java.io.PrintStream;
  */
 public class HealthPrinterVersionImpl implements HealthPrinter
 {
-   private static final String SERVER_NAME_LABEL = "Host";
-   private static final String STATUS_NAME_LABEL = "Status";
-   private static PrintStream  OUTPUT_STREAM     = System.out;
+   private static PrintStream OUTPUT_STREAM = System.out;
 
 
    /**
@@ -60,7 +58,7 @@ public class HealthPrinterVersionImpl implements HealthPrinter
     */
    private static void printHeadersInternal (final PrintStreamDecorator stream)
    {
-      stream.append (String.format ("%-40s %s \n", SERVER_NAME_LABEL, STATUS_NAME_LABEL));
+      stream.append ("");
    }
 
 
