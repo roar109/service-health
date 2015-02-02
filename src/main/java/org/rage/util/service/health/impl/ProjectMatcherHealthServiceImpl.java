@@ -1,19 +1,10 @@
 package org.rage.util.service.health.impl;
 
 
-import org.rage.util.model.health.HealthArtifact;
 import org.rage.util.monitor.health.HealthMonitorType;
-import org.rage.util.monitor.health.impl.HealthMonitorImpl;
-import org.rage.util.printer.HealthPrinter;
 import org.rage.util.printer.HealthPrinterType;
-import org.rage.util.printer.impl.HealthPrinterFactory;
-import org.rage.util.reader.FileReader;
 import org.rage.util.reader.FileReaderType;
-import org.rage.util.reader.impl.FileReaderFactory;
 import org.rage.util.service.health.HealthService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -23,12 +14,9 @@ import java.util.List;
  * @version $Id$
  * @since 02/02/2015
  *
- * @todo Complete description
  */
-public class ProjectMatcherHealthServiceImpl implements HealthService
+public class ProjectMatcherHealthServiceImpl extends HealthServiceBase implements HealthService
 {
-   private final List <HealthArtifact> artifacts = new ArrayList <HealthArtifact> ();
-
 
    /**
     * Overrides checkHealthStatus
@@ -39,34 +27,8 @@ public class ProjectMatcherHealthServiceImpl implements HealthService
     */
    public void checkHealthStatus (final String[] arguments)
    {
-      readArtifacts (arguments[0]);
-      checkArtifactsHealth ();
-      logArtifacts ();
+      readArtifacts (arguments[0], FileReaderType.PROJECT_VERSION_MATCHER);
+      checkArtifactsHealth (HealthMonitorType.PROJECT_MATCHER);
+      logArtifacts (HealthPrinterType.VERSION);
    }
-
-
-   private void readArtifacts (final String fileName)
-   {
-      final FileReader fileReader = FileReaderFactory.createFileReader (FileReaderType.PROJECT_VERSION_MATCHER,
-            fileName);
-      artifacts.addAll (fileReader.getServiceList ());
-   }
-
-
-   private void checkArtifactsHealth ()
-   {
-      (new HealthMonitorImpl (artifacts)).runAllAndWait (HealthMonitorType.PROJECT_MATCHER);
-   }
-
-
-   private void logArtifacts ()
-   {
-      final HealthPrinter printer = HealthPrinterFactory.instance (HealthPrinterType.VERSION);
-
-      for (final HealthArtifact artifact : artifacts)
-      {
-         printer.print (artifact);
-      }
-   }
-
 }
