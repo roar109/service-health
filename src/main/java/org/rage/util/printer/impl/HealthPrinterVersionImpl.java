@@ -6,6 +6,8 @@ import org.rage.util.model.health.Project;
 import org.rage.util.printer.HealthPrinter;
 import org.rage.util.service.health.util.PrintStreamDecorator;
 
+import java.io.PrintStream;
+
 
 /**
  * HealthPrinterVersionImpl
@@ -17,6 +19,10 @@ import org.rage.util.service.health.util.PrintStreamDecorator;
  */
 public class HealthPrinterVersionImpl implements HealthPrinter
 {
+   private static final String SERVER_NAME_LABEL = "Host";
+   private static final String STATUS_NAME_LABEL = "Status";
+   private static PrintStream  OUTPUT_STREAM     = System.out;
+
 
    /**
     * Represents printHeaders
@@ -28,7 +34,7 @@ public class HealthPrinterVersionImpl implements HealthPrinter
     */
    public void printHeaders (final PrintStreamDecorator stream)
    {
-      // NOIMPLEMENTATION
+      printHeadersInternal (stream);
    }
 
 
@@ -40,7 +46,21 @@ public class HealthPrinterVersionImpl implements HealthPrinter
     */
    public void printHeaders ()
    {
-      // NOIMPLEMENTATION
+      printHeadersInternal (new PrintStreamDecorator (OUTPUT_STREAM));
+   }
+
+
+   /**
+    * Represents printHeaders
+    *
+    * @param stream
+    *
+    * @since Oct 24, 2014
+    *
+    */
+   private static void printHeadersInternal (final PrintStreamDecorator stream)
+   {
+      stream.append (String.format ("%-40s %s \n", SERVER_NAME_LABEL, STATUS_NAME_LABEL));
    }
 
 
@@ -54,7 +74,7 @@ public class HealthPrinterVersionImpl implements HealthPrinter
     */
    public void print (final HealthArtifact artifact, final PrintStreamDecorator stream)
    {
-      // NOIMPLEMENTATION
+      printInternal (artifact, stream);
    }
 
 
@@ -67,7 +87,7 @@ public class HealthPrinterVersionImpl implements HealthPrinter
     */
    public void print (final HealthArtifact artifact)
    {
-      // NOIMPLEMENTATION
+      printInternal (artifact, new PrintStreamDecorator (OUTPUT_STREAM));
    }
 
 
@@ -84,7 +104,10 @@ public class HealthPrinterVersionImpl implements HealthPrinter
       final StringBuilder sb = new StringBuilder ();
       sb.append ("\n").append ("URL: ").append (artifact.getCompletePath ()).append ("\n");
       sb.append ("Status: ").append (getActiveServerText (artifact.isStatus ())).append ("\n");
-      sb.append ("Version Match?: ").append (getVersionMatchText (artifact)).append ("\n");
+      if ( (artifact.getProject () != null) && (artifact.getProject ().getTargetVersion () != null))
+      {
+         sb.append ("Version Match?: ").append (getVersionMatchText (artifact)).append ("\n");
+      }
       stream.append (sb.toString ());
    }
 

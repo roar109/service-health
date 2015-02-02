@@ -48,7 +48,7 @@ public class HealthPrinterFactory implements HealthPrinter
          switch (type)
          {
             case PROJECT_HEALTH :
-               healthPrinter = new HealthPrinterFactory ();
+               healthPrinter = new HealthPrinterVersionImpl ();
                break;
             case SERVICE_HEALTH :
                healthPrinter = new HealthPrinterFactory ();
