@@ -1,4 +1,4 @@
 CheckerMains - Service 	* reader
-						- checkerMain
-							checker each artifact
+						 * checkerMain
+							* checker each artifact
 						-print
