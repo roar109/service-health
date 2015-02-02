@@ -5,7 +5,7 @@ Small command line service to check if some hosts/jvm are alive
 
 Execute with eclipse the launch file or with maven:
 
-`mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleHealthChecker -Dexec.args="c:\servers-list.txt"`
+`mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain -Dexec.args="c:\servers-list.txt"`
 
 You can add the `-DtoFile=y` parameter to export the content to a results.txt
 
@@ -25,11 +25,11 @@ For deployed wars this tool can:
 See `example-files` folder to see input file examples.
 
 Example commands from maven console
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleHealthChecker -Dexec.args="example-files\servers-list.txt example-files\servers-list-vip.txt"
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain -Dexec.args="example-files\servers-list.txt example-files\servers-list-vip.txt"
 
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleProjectHealthChecker -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectHealthMain -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt
 
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.service.health.service.ConsoleAppVersionChecker -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
+cmd /k mvn exec:java -Dexec.mainClassorg.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
 
 ### TODO
 - Pass as a parameter balancer port (optional)
