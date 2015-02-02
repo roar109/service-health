@@ -13,7 +13,7 @@ import java.io.PrintStream;
 /**
  * PrintHealthHelper represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
  *

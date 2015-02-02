@@ -13,11 +13,10 @@ import java.util.List;
 /**
  * ServerFileReaderImpl represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 30/01/2015
  *
- * @todo Complete description
  */
 public class ServerFileReaderImpl implements FileReader
 {
@@ -37,7 +36,7 @@ public class ServerFileReaderImpl implements FileReader
 
    /**
     * Overrides getServiceList
-    * 
+    *
     * @since 30/01/2015
     * @see org.rage.util.reader.FileReader#getServiceList()
     */
@@ -71,7 +70,7 @@ public class ServerFileReaderImpl implements FileReader
 
    /**
     * Overrides getServiceList
-    * 
+    *
     * @return artifacts
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#getServiceList()

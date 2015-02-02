@@ -4,7 +4,7 @@ package org.rage.util.printer;
 /**
  * HealthPrinterType represents the types of possible printer objects.
  *
- * @author hector.mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 18/12/2014
  *

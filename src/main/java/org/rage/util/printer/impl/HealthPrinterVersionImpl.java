@@ -12,7 +12,7 @@ import java.io.PrintStream;
 /**
  * HealthPrinterVersionImpl
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since Oct 24, 2014
  *

@@ -10,7 +10,7 @@ import org.rage.util.service.health.HealthService;
 /**
  * ProjectHealthServiceImpl represents ...
  *
- * @author <a href="mailto:hector.mendoza@24hourfit.com">hector.mendoza</a>
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 02/02/2015
  *

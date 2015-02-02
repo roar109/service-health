@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * HealthServiceBase represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 02/02/2015
  *
@@ -42,6 +42,7 @@ public class HealthServiceBase
       if (printToFile)
       {
          resultsPath = HealthServiceHelper.getResultsPath ();
+         // TODO implement this
       }
    }
 

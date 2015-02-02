@@ -8,11 +8,10 @@ import org.rage.util.service.health.util.PrintStreamDecorator;
 /**
  * HealthPrinter represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 02/02/2015
  *
- * @todo Complete description
  */
 public interface HealthPrinter
 {

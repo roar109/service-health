@@ -13,11 +13,10 @@ import java.util.List;
 /**
  * BalancerFileReaderImpl represents ...
  *
- * @author hector mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 30/01/2015
  *
- * @todo Complete description
  */
 public class BalancerFileReaderImpl implements FileReader
 {
@@ -37,7 +36,7 @@ public class BalancerFileReaderImpl implements FileReader
 
    /**
     * Overrides readFile
-    * 
+    *
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#readFile()
     */
@@ -65,7 +64,7 @@ public class BalancerFileReaderImpl implements FileReader
 
    /**
     * Overrides getServiceList
-    * 
+    *
     * @return artifacts
     * @since Oct 24, 2014
     * @see org.rage.util.service.health.io.ReaderManager#getServiceList()

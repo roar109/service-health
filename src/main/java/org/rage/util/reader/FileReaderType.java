@@ -4,7 +4,7 @@ package org.rage.util.reader;
 /**
  * FileReaderType represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 30/01/2015
  *

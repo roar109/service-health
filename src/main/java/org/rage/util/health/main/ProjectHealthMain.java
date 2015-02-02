@@ -8,7 +8,7 @@ import org.rage.util.service.health.impl.ProjectHealthServiceImpl;
 /**
  * ProjectHealthMain represents ...
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 02/02/2015
  *
