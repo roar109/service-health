@@ -26,7 +26,7 @@ public class ServerFileReaderImpl implements FileReader
 
    /**
     * Constructs an instance of ServerFileReaderImpl object.
-    * 
+    *
     * @param fileName
     */
    public ServerFileReaderImpl (final String fileName)
@@ -58,7 +58,7 @@ public class ServerFileReaderImpl implements FileReader
                {
                   port = new Integer (data[1]);
                }
-               artifacts.add (new HealthArtifact (data[0], port));
+               artifacts.add (new HealthArtifact (data[0], ReaderHelper.getServerPort (port)));
             }
          }
       }

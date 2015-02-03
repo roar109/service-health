@@ -12,8 +12,12 @@ package org.rage.util.reader;
 public class FileReaderConstants
 {
    /** HealthCheckerConstants for BALANCER_PORT */
-   public static final int BALANCER_PORT       = 8180;
+   public static final int    BALANCER_PORT          = 8180;
 
    /** HealthCheckerConstants for SERVER_NAMES */
-   public static final int SERVER_DEFAULT_PORT = 8080;
+   public static final int    SERVER_DEFAULT_PORT    = 8080;
+   /** FileReaderConstants for BALANCER_PORT_PROPERTY */
+   public static final String BALANCER_PORT_PROPERTY = "balancer.port";
+   /** FileReaderConstants for SERVER_PORT_PROPERTY */
+   public static final String SERVER_PORT_PROPERTY   = "server.port";
 }

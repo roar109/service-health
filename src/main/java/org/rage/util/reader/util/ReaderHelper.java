@@ -21,8 +21,6 @@ import java.util.List;
  */
 public final class ReaderHelper
 {
-   private static final String BALANCER_PORT_PROPERTY = "balancer.port";
-
 
    /**
     * Check the passed string against some basic validates to discard white spaces and comments.
@@ -80,11 +78,30 @@ public final class ReaderHelper
     */
    public static int getBalancerPort ()
    {
-      if (StringUtils.isNoneEmpty (System.getProperty (BALANCER_PORT_PROPERTY)))
+      if (StringUtils.isNoneEmpty (System.getProperty (FileReaderConstants.BALANCER_PORT_PROPERTY)))
       {
-         return Integer.parseInt (System.getProperty (BALANCER_PORT_PROPERTY));
+         return Integer.parseInt (System.getProperty (FileReaderConstants.BALANCER_PORT_PROPERTY));
       }
 
       return FileReaderConstants.BALANCER_PORT;
+   }
+
+
+   /**
+    * Represents getServerPort
+    *
+    * @param port
+    * @return port
+    * @since 03/02/2015
+    *
+    */
+   public static Integer getServerPort (final Integer port)
+   {
+      if (StringUtils.isNoneEmpty (System.getProperty (FileReaderConstants.SERVER_PORT_PROPERTY)))
+      {
+         return Integer.parseInt (System.getProperty (FileReaderConstants.SERVER_PORT_PROPERTY));
+      }
+
+      return port;
    }
 }

@@ -33,6 +33,8 @@ cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectMatcherHe
 
 ### Completed from TODO
 - `-Dbalancer.port=890`
+- `-Dserver.port=890`
+
 
 ### TODO
 - Path to check if is alive a war (optional)
