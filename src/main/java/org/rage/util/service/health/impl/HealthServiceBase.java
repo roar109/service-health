@@ -11,6 +11,7 @@ import org.rage.util.reader.FileReader;
 import org.rage.util.reader.FileReaderType;
 import org.rage.util.reader.impl.FileReaderFactory;
 import org.rage.util.service.health.util.HealthServiceHelper;
+import org.rage.util.service.health.util.ValidationHealthServiceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,20 @@ public class HealthServiceBase
       if (printToFile)
       {
          resultsPath = HealthServiceHelper.getResultsPath ();
-         // TODO implement this
       }
+   }
+
+
+   /**
+    * Validate the passed argument list.
+    *
+    * @param arguments
+    * @since 03/02/2015
+    *
+    */
+   public void validateArguments (final String[] arguments)
+   {
+      ValidationHealthServiceHelper.validateArguments (arguments);
    }
 
 

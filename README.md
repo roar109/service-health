@@ -29,7 +29,7 @@ cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain
 
 cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectHealthMain -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt
 
-cmd /k mvn exec:java -Dexec.mainClassorg.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
+cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
 
 ### Completed from TODO
 - `-Dbalancer.port=890`

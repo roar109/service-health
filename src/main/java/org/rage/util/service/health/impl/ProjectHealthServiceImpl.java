@@ -27,6 +27,7 @@ public class ProjectHealthServiceImpl extends HealthServiceBase implements Healt
     */
    public void checkHealthStatus (final String[] arguments)
    {
+      validateArguments (arguments);
       readArtifacts (arguments[0], FileReaderType.PROJECT);
       checkArtifactsHealth (HealthMonitorType.PROJECT);
       logArtifacts (HealthPrinterType.PROJECT_HEALTH);

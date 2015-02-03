@@ -27,6 +27,7 @@ public class ProjectMatcherHealthServiceImpl extends HealthServiceBase implement
     */
    public void checkHealthStatus (final String[] arguments)
    {
+      validateArguments (arguments);
       readArtifacts (arguments[0], FileReaderType.PROJECT_VERSION_MATCHER);
       checkArtifactsHealth (HealthMonitorType.PROJECT_MATCHER);
       logArtifacts (HealthPrinterType.VERSION);

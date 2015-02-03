@@ -28,6 +28,7 @@ public class ServerHealthServiceImpl extends HealthServiceBase implements Health
     */
    public void checkHealthStatus (final String[] arguments)
    {
+      validateArguments (arguments);
       readArtifacts (arguments[0], FileReaderType.SERVER);
       if (arguments.length > 1)
       {
