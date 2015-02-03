@@ -7,7 +7,7 @@ Execute with eclipse the launch file or with maven:
 
 `mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain -Dexec.args="c:\servers-list.txt"`
 
-You can add the `-DtoFile=y` parameter to export the content to a results.txt
+You can add the `-DtoFile=y` parameter to export the content to a results.txt, or add a -DresultsPath=path/file.txt to specified the path.
 
 Parameters:
 - args[0] = path/to/file/servers.txt
@@ -15,7 +15,7 @@ Parameters:
 
 Read each line of the file in this format `hostname.com,port`
 
-For the balancer urls by default uses 8180 as port
+For the balancer urls by default uses 8180 as port. You can overwrite it using the balancer.port system property.
 
 ### WARs
 For deployed wars this tool can:
@@ -24,16 +24,18 @@ For deployed wars this tool can:
  
 See `example-files` folder to see input file examples.
 
-Example commands from maven console
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain -Dexec.args="example-files\servers-list.txt example-files\servers-list-vip.txt"
+Example commands from maven console:
 
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectHealthMain -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt
+`mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ServerHealthMain -Dexec.args="example-files\servers-list.txt example-files\servers-list-vip.txt"`
 
-cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
+`mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectHealthMain -Dexec.args="example-files\project-list.txt" -DtoFile=y -DresultsPath=results-project.txt`
+
+`mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt`
+
 
 ### Completed from TODO
 - `-Dbalancer.port=890`
-- `-Dserver.port=890`
+- `-Dserver.port=8080` Overwrite all ports for the Server flow.
 
 
 ### TODO
