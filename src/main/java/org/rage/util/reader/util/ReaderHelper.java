@@ -3,6 +3,7 @@ package org.rage.util.reader.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.rage.util.reader.FileReaderConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,9 @@ import java.util.List;
  */
 public final class ReaderHelper
 {
+   private static final String BALANCER_PORT_PROPERTY = "balancer.port";
+
+
    /**
     * Check the passed string against some basic validates to discard white spaces and comments.
     *
@@ -53,7 +57,7 @@ public final class ReaderHelper
       final File file = new File (fileName);
       if ( !file.exists ())
       {
-         throw new IllegalArgumentException ("File doesnt exist!");
+         throw new IllegalArgumentException ("File doesn't exist!");
       }
       try
       {
@@ -64,5 +68,23 @@ public final class ReaderHelper
          e.printStackTrace ();
          return null;
       }
+   }
+
+
+   /**
+    * Represents getBalancerPort
+    *
+    * @return port
+    * @since 03/02/2015
+    *
+    */
+   public static int getBalancerPort ()
+   {
+      if (StringUtils.isNoneEmpty (System.getProperty (BALANCER_PORT_PROPERTY)))
+      {
+         return Integer.parseInt (System.getProperty (BALANCER_PORT_PROPERTY));
+      }
+
+      return FileReaderConstants.BALANCER_PORT;
    }
 }

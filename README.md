@@ -31,7 +31,9 @@ cmd /k mvn exec:java -Dexec.mainClass=org.rage.util.health.main.ProjectHealthMai
 
 cmd /k mvn exec:java -Dexec.mainClassorg.rage.util.health.main.ProjectMatcherHealthMain -Dexec.args="example-files\projectversion-list.txt" -DtoFile=y -DresultsPath=results-version.txt
 
+### Completed from TODO
+- `-Dbalancer.port=890`
+
 ### TODO
-- Pass as a parameter balancer port (optional)
 - Path to check if is alive a war (optional)
 - Generate a war that checks automatically each X time the servers health.

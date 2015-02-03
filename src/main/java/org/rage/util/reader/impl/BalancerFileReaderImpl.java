@@ -3,7 +3,6 @@ package org.rage.util.reader.impl;
 
 import org.rage.util.model.health.HealthArtifact;
 import org.rage.util.reader.FileReader;
-import org.rage.util.reader.FileReaderConstants;
 import org.rage.util.reader.util.ReaderHelper;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class BalancerFileReaderImpl implements FileReader
 
    /**
     * Constructs an instance of BalancerFileReaderImpl object.
-    * 
+    *
     * @param fileName
     */
    public BalancerFileReaderImpl (final String fileName)
@@ -52,7 +51,7 @@ public class BalancerFileReaderImpl implements FileReader
          {
             if (ReaderHelper.includeLine (line))
             {
-               artifacts.add (new HealthArtifact (line, FileReaderConstants.BALANCER_PORT));
+               artifacts.add (new HealthArtifact (line, ReaderHelper.getBalancerPort ()));
             }
          }
       }
