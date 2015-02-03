@@ -1,12 +1,16 @@
 package org.rage.util.printer.impl;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.rage.util.model.health.HealthArtifact;
 import org.rage.util.model.health.Project;
 import org.rage.util.printer.HealthPrinter;
+import org.rage.util.printer.HealthPrinterConstants;
 import org.rage.util.printer.HealthPrinterType;
 import org.rage.util.service.health.util.PrintStreamDecorator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 
@@ -22,12 +26,16 @@ public class HealthPrinterFactory implements HealthPrinter
 {
    private static final String    SERVER_NAME_LABEL = "Host";
    private static final String    STATUS_NAME_LABEL = "Status";
-   private static PrintStream     OUTPUT_STREAM     = System.out;
+   private static PrintStream     DEFAULT_STREAM    = System.out;
+   private PrintStream            outputStream      = null;
    private static HealthPrinter[] instances         = new HealthPrinter[HealthPrinterType.getCount ()];
+   private boolean                toFile            = Boolean.FALSE;
+   private String                 resultsPath       = null;
 
 
    private HealthPrinterFactory ()
    {
+      // constructor
    }
 
 
@@ -66,26 +74,12 @@ public class HealthPrinterFactory implements HealthPrinter
    /**
     * Represents printHeaders
     *
-    * @param stream
-    *
-    * @since Oct 29, 2014
-    *
-    */
-   public void printHeaders (final PrintStreamDecorator stream)
-   {
-      printHeadersInternal (stream);
-   }
-
-
-   /**
-    * Represents printHeaders
-    *
     * @since Oct 29, 2014
     *
     */
    public void printHeaders ()
    {
-      printHeadersInternal (new PrintStreamDecorator (OUTPUT_STREAM));
+      printHeadersInternal (getCurrentStream ());
    }
 
 
@@ -107,26 +101,12 @@ public class HealthPrinterFactory implements HealthPrinter
     * Represents print
     *
     * @param artifact
-    * @param stream
-    * @since Oct 29, 2014
-    *
-    */
-   public void print (final HealthArtifact artifact, final PrintStreamDecorator stream)
-   {
-      printInternal (artifact, stream);
-   }
-
-
-   /**
-    * Represents print
-    *
-    * @param artifact
     * @since Oct 29, 2014
     *
     */
    public void print (final HealthArtifact artifact)
    {
-      printInternal (artifact, new PrintStreamDecorator (OUTPUT_STREAM));
+      printInternal (artifact, getCurrentStream ());
    }
 
 
@@ -172,5 +152,64 @@ public class HealthPrinterFactory implements HealthPrinter
          }
       }
       return "";
+   }
+
+
+   /**
+    * Overrides setPrintToFile
+    *
+    * @param toFile
+    * @since 02/02/2015
+    * @see org.rage.util.printer.HealthPrinter#setPrintToFile(boolean)
+    */
+   public void setPrintToFile (final boolean toFile)
+   {
+      this.toFile = toFile;
+   }
+
+
+   /**
+    * Overrides getCurrentStream
+    *
+    * @return decorator
+    * @since 02/02/2015
+    * @see org.rage.util.printer.HealthPrinter#getCurrentStream()
+    */
+   public PrintStreamDecorator getCurrentStream ()
+   {
+      if (toFile)
+      {
+         PrintStreamDecorator decorator = null;
+         try
+         {
+            if (outputStream == null)
+            {
+               resultsPath = StringUtils.isNoneEmpty (resultsPath)
+                     ? resultsPath
+                     : HealthPrinterConstants.DEFAULT_FILENAME;
+               outputStream = new PrintStream (new File (resultsPath));
+            }
+            decorator = new PrintStreamDecorator (DEFAULT_STREAM, outputStream);
+         }
+         catch (final FileNotFoundException e)
+         {
+            /***/
+         }
+         return decorator;
+      }
+      return new PrintStreamDecorator (DEFAULT_STREAM);
+   }
+
+
+   /**
+    * Represents setResultsPath
+    *
+    * @param resultsPath
+    * @since 02/02/2015
+    *
+    */
+   public void setResultsPath (final String resultsPath)
+   {
+      this.resultsPath = resultsPath;
    }
 }

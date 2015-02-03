@@ -57,6 +57,8 @@ public class HealthServiceBase
    public void logArtifacts (final HealthPrinterType healthPrinterType)
    {
       final HealthPrinter printer = HealthPrinterFactory.instance (healthPrinterType);
+      printer.setPrintToFile (printToFile);
+      printer.setResultsPath (resultsPath);
       printer.printHeaders ();
 
       for (final HealthArtifact artifact : artifacts)

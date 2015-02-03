@@ -55,7 +55,7 @@ public class PrintStreamDecorator
       outputStream.println (x);
       if (outputStreamFile != null)
       {
-         outputStreamFile.println (x);
+         outputStreamFile.append (x);
       }
    }
 
@@ -71,7 +71,7 @@ public class PrintStreamDecorator
       outputStream.println ();
       if (outputStreamFile != null)
       {
-         outputStreamFile.println ();
+         outputStreamFile.append ("");
       }
    }
 
