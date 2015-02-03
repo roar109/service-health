@@ -7,7 +7,7 @@ import java.io.PrintStream;
 /**
  * Use the "decorator" pattern - not really but close :)
  *
- * @author Hector Mendoza
+ * @author <roar109@gmail.com> Hector Mendoza
  * @version $Id$
  * @since 30/01/2015
  *
@@ -55,7 +55,7 @@ public class PrintStreamDecorator
       outputStream.println (x);
       if (outputStreamFile != null)
       {
-         outputStreamFile.println (x);
+         outputStreamFile.append (x);
       }
    }
 
@@ -71,7 +71,7 @@ public class PrintStreamDecorator
       outputStream.println ();
       if (outputStreamFile != null)
       {
-         outputStreamFile.println ();
+         outputStreamFile.append ("");
       }
    }
 
