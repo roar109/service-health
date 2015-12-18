@@ -61,3 +61,5 @@ $RECYCLE.BIN/
 *.msp
 /target/
 /.settings/
+/.classpath
+/.project
