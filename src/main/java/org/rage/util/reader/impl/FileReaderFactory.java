@@ -1,15 +1,15 @@
 package org.rage.util.reader.impl;
 
 
+import java.util.Optional;
+
 import org.rage.util.reader.FileReader;
 import org.rage.util.reader.FileReaderType;
 
 
 /**
- * FileReaderFactory represents ...
  *
- * @author <roar109@gmail.com> Hector Mendoza
- * @version $Id$
+ * @author Hector Mendoza
  * @since 30/01/2015
  *
  */
@@ -25,23 +25,27 @@ public final class FileReaderFactory
     * @since 30/01/2015
     *
     */
-   public static FileReader createFileReader (final FileReaderType fileReaderType, final String fileName)
+   public static Optional<FileReader> createFileReader (final FileReaderType fileReaderType, final String fileName)
    {
-      FileReader fileReader = null;
+      Optional<FileReader> fileReader = Optional.empty();
+      
       switch (fileReaderType)
       {
          case BALANCER :
-            fileReader = new BalancerFileReaderImpl (fileName);
+            fileReader = Optional.of(new BalancerFileReaderImpl (fileName));
             break;
          case SERVER :
-            fileReader = new ServerFileReaderImpl (fileName);
+            fileReader =  Optional.of(new ServerFileReaderImpl (fileName));
             break;
          case PROJECT :
-            fileReader = new ProjectFileReaderImpl (Boolean.FALSE, fileName);
+            fileReader = Optional.of(new ProjectFileReaderImpl (Boolean.FALSE, fileName));
             break;
          case PROJECT_VERSION_MATCHER :
-            fileReader = new ProjectFileReaderImpl (Boolean.TRUE, fileName);
+            fileReader = Optional.of(new ProjectFileReaderImpl (Boolean.TRUE, fileName));
             break;
+         case WEBSITE :
+             fileReader = Optional.of(new WebsiteFileReaderImpl (fileName));
+             break;
       }
       return fileReader;
    }

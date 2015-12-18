@@ -11,10 +11,9 @@ package org.rage.util.reader;
  */
 public enum FileReaderType
 {
-   /** FileReaderType for BALANCER */
-   BALANCER, /** FileReaderType for SERVER */
-   SERVER, /** FileReaderType for PROJECT */
+   BALANCER,
+   SERVER,
    PROJECT,
-   /** FileReaderType for PROJECT_VERSION_MATCHER */
-   PROJECT_VERSION_MATCHER;
+   PROJECT_VERSION_MATCHER,
+   WEBSITE;
 }

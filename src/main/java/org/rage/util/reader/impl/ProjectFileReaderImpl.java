@@ -8,6 +8,7 @@ import org.rage.util.reader.util.ReaderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -47,29 +48,23 @@ public class ProjectFileReaderImpl implements FileReader
    {
       try
       {
-         final List <String> lines = ReaderHelper.getLinesFromFile (fileName);
+         final Optional<List <String>> optionalLines = ReaderHelper.getLinesFromFile (fileName);
 
-         for (final String line : lines)
-         {
-            if (ReaderHelper.includeLine (line))
-            {
-               final String[] data = line.split (",");
-               final HealthArtifact artifact = new HealthArtifact (data[0], new Integer (data[1]));
-               if (readTargetVersion)
-               {
-                  artifact.setProject (new Project (data[2], data[3]));
-                  projects.add (artifact);
-               }
-               else
-               {
-                  artifact.setProject (new Project (data[2]));
-                  projects.add (artifact);
-               }
-            }
-         }
+         optionalLines.ifPresent(lines -> lines.forEach(line -> {
+        	 if (ReaderHelper.includeLine (line)){
+                final String[] data = line.split (",");
+                final HealthArtifact artifact = new HealthArtifact (data[0], new Integer (data[1]));
+                if (readTargetVersion){
+                   artifact.setProject (new Project (data[2], data[3]));
+                   projects.add (artifact);
+                }else{
+                   artifact.setProject (new Project (data[2]));
+                   projects.add (artifact);
+                }
+             }
+         }));
       }
-      catch (final Exception e)
-      {
+      catch (final Exception e){
          System.err.println (e.getMessage ());
          e.printStackTrace ();
       }

@@ -11,10 +11,10 @@ package org.rage.util.printer;
  */
 public enum HealthPrinterType
 {
-   /** HealthPrinterType for VERSION */
-   VERSION (1), /** HealthPrinterType for PROJECT_HEALTH */
-   PROJECT_HEALTH (2), /** HealthPrinterType for SERVICE_HEALTH */
-   SERVICE_HEALTH (3);
+   VERSION (1),
+   PROJECT_HEALTH (2), 
+   SERVICE_HEALTH (3),
+   WEBSITE(4);
 
    private int value;
 
@@ -34,7 +34,7 @@ public enum HealthPrinterType
     */
    public static int getCount ()
    {
-      return 3;
+      return 4;
    }
 
 

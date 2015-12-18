@@ -15,10 +15,8 @@ import java.io.PrintStream;
 
 
 /**
- * PrintHealthHelper represents ...
  *
- * @author <roar109@gmail.com> Hector Mendoza
- * @version $Id$
+ * @author Hector Mendoza
  * @since Oct 24, 2014
  *
  */
@@ -32,13 +30,6 @@ public class HealthPrinterFactory implements HealthPrinter
    private boolean                toFile            = Boolean.FALSE;
    private String                 resultsPath       = null;
 
-
-   private HealthPrinterFactory ()
-   {
-      // constructor
-   }
-
-
    /**
     * Returns the instance of the printer associated with the type
     *
@@ -51,8 +42,7 @@ public class HealthPrinterFactory implements HealthPrinter
    {
       HealthPrinter healthPrinter = instances[type.getValue () - 1];
 
-      if (healthPrinter == null)
-      {
+      if (healthPrinter == null){
          switch (type)
          {
             case PROJECT_HEALTH :
@@ -64,6 +54,9 @@ public class HealthPrinterFactory implements HealthPrinter
             case VERSION :
                healthPrinter = new HealthPrinterVersionImpl ();
                break;
+            case WEBSITE :
+                healthPrinter = new WebsiteHealthPrinterImpl ();
+                break;
          }
          instances[type.getValue () - 1] = healthPrinter;
       }

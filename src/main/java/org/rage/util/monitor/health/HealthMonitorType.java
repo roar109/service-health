@@ -7,12 +7,9 @@ package org.rage.util.monitor.health;
  */
 public enum HealthMonitorType
 {
-   /** HealthMonitorType for SERVER */
    SERVER,
-   /** HealthMonitorType for BALANCER */
    BALANCER,
-   /** HealthMonitorType for PROJECT */
    PROJECT,
-   /** HealthMonitorType for PROJECT_MATCHER */
-   PROJECT_MATCHER;
+   PROJECT_MATCHER,
+   WEBSITE;
 }

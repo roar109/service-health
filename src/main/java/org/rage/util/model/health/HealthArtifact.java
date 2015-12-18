@@ -25,6 +25,10 @@ public class HealthArtifact
       this.server = server;
       this.port = port;
    }
+   
+   public HealthArtifact (final String server){
+	   this.server = server;
+   }
 
 
    /**

@@ -57,6 +57,9 @@ public class HealthMonitorImpl implements HealthMonitor
             case PROJECT_MATCHER :
                executor.execute (new ProjectHealthMonitorImpl (artifact));
                break;
+            case WEBSITE :
+                executor.execute (new WebsiteHealthMonitorImpl (artifact));
+                break;
          }
       }
 

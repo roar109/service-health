@@ -7,6 +7,7 @@ import org.rage.util.reader.util.ReaderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -45,15 +46,13 @@ public class BalancerFileReaderImpl implements FileReader
    {
       try
       {
-         final List <String> lines = ReaderHelper.getLinesFromFile (fileName);
+         final Optional<List <String>> optionalLines = ReaderHelper.getLinesFromFile (fileName);
 
-         for (final String line : lines)
-         {
-            if (ReaderHelper.includeLine (line))
-            {
-               artifacts.add (new HealthArtifact (line, ReaderHelper.getBalancerPort ()));
-            }
-         }
+         optionalLines.ifPresent(lines -> lines.stream().forEach(line -> {
+             if (ReaderHelper.includeLine (line)){
+                artifacts.add (new HealthArtifact (line, ReaderHelper.getBalancerPort ()));
+             }
+         }));
       }
       catch (final Exception e)
       {

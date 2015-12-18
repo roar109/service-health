@@ -27,7 +27,6 @@ public class ProjectHealthMain
    {
       final HealthService service = new ProjectHealthServiceImpl ();
       service.checkHealthStatus (args);
-
    }
 
 }
